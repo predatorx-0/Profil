@@ -7,36 +7,56 @@
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f2f6fa;
+      background-color: #111;
       margin: 0;
       padding: 0;
-      color: #222;
+      color: #fff;
+      overflow-x: hidden;
     }
 
     .container {
       max-width: 950px;
       margin: 40px auto;
-      background-color: #ffffff;
+      background-color: #1c1c1c;
       padding: 40px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 4px 20px rgba(255, 0, 0, 0.2);
       border-radius: 10px;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
     }
 
     h1 {
-      color: #0a3d62;
+      color: #ff0000;
       font-size: 32px;
       margin-bottom: 5px;
+      transition: transform 0.3s;
+    }
+
+    h1:hover {
+      transform: scale(1.05);
     }
 
     h2.section-title {
-      border-bottom: 2px solid #0a3d62;
+      border-bottom: 2px solid #ff0000;
       padding-bottom: 5px;
-      color: #0a3d62;
+      color: #ff0000;
       margin-top: 30px;
+      transition: color 0.3s ease;
+    }
+
+    h2.section-title:hover {
+      color: #fff;
     }
 
     p, li {
       line-height: 1.6;
+      color: #ddd;
     }
 
     ul {
@@ -46,17 +66,26 @@
 
     li {
       margin-bottom: 10px;
+      transition: transform 0.2s;
+    }
+
+    li:hover {
+      transform: translateX(5px);
     }
 
     .date {
       float: right;
-      color: #666;
+      color: #999;
       font-size: 14px;
     }
 
     a {
-      color: #0a3d62;
+      color: #ff0000;
       text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
     }
 
     .contact-info {
@@ -65,12 +94,43 @@
 
     .badge {
       display: inline-block;
-      background-color: #0a3d62;
+      background-color: #ff0000;
       color: white;
       border-radius: 5px;
       padding: 2px 8px;
       font-size: 12px;
       margin-left: 8px;
+    }
+
+    .btn-download {
+      background-color: #ff0000;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 20px;
+      font-weight: bold;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .btn-download:hover {
+      background-color: #cc0000;
+      transform: scale(1.05);
+    }
+
+    @media screen and (max-width: 768px) {
+      .container {
+        padding: 20px;
+        margin: 20px;
+      }
+
+      .date {
+        float: none;
+        display: block;
+        margin-top: 5px;
+      }
     }
   </style>
 </head>
@@ -83,12 +143,12 @@
         <strong>LinkedIn :</strong> <a href="https://www.linkedin.com/in/yasser-el-karch/">linkedin.com/in/yasser-el-karch</a><br>
         <strong>GitHub :</strong> <a href="https://github.com/predatorx-0">github.com/predatorx-0</a>
       </p>
+      <a href="cv.pdf" class="btn-download" download>Télécharger mon CV (PDF)</a>
     </div>
 
     <h2 class="section-title">Profil</h2>
     <p>
       Ingénieur en Télécommunications et Réseaux, avec une spécialisation en cybersécurité, j’occupe actuellement le poste d’Auditeur SI à l’Inspection Générale de la Banque Centrale Populaire. Mon objectif est de me spécialiser davantage en tests d’intrusion et en audit de sécurité des systèmes d'information. je souhaite approfondir mes compétences techniques et méthodologiques pour intervenir sur des missions d’évaluation de la sécurité, d’identification de vulnérabilités, et de renforcement des infrastructures critiques. Mon ambition est de contribuer activement à des projets de sécurité offensifs et défensifs de haut niveau.
-
     </p>
 
     <h2 class="section-title">Compétences techniques</h2>
@@ -100,9 +160,10 @@
       <li><strong>Virtualisation :</strong> VMware, VirtualBox, GNS3, EVE-NG</li>
       <li><strong>Réseaux :</strong> tcp/ip , ssh , routage , firewalls, WAN, VoiIP, Technologie des Réseaux </li>
     </ul>
+
     <h2 class="section-title">Expériences professionnelles</h2>
     <ul>
-        <li>
+      <li>
         <strong> Auditeur SI (CDI) </strong>
         <span class="date">Décembre 2024 - Présent</span><br>
         Gestion et suivi des recommandations issues des audits de sécurité sur la plateforme eFront ERM.<br>
@@ -129,7 +190,7 @@
       <li>
         <strong>Stage d’observation – ONEE L'Office National de l'Électricité et de l'Eau potable </strong>
         <span class="date">Août 2021</span><br>
-       Introduction au monde de l'entreprise Découverte des Serveurs virtuels et de l’architecture Réseaux de l’entreprise.
+        Introduction au monde de l'entreprise Découverte des Serveurs virtuels et de l’architecture Réseaux de l’entreprise.
       </li>
     </ul>
 
