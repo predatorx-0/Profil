@@ -60,6 +60,21 @@
       transition: 0.3s;
     }
 
+    .date {
+      color: #999;
+      font-size: 14px;
+      font-style: italic;
+   }
+
+    .badge {
+      background: #ff0000;
+      color: #fff;
+      border-radius: 5px;
+      padding: 2px 8px;
+      font-size: 12px;
+      margin-left: 8px;
+    }
+    
     .btn-download:hover {
       background: #cc0000;
       transform: scale(1.05);
@@ -128,50 +143,90 @@
     <img src="profile.jpg" alt="Photo de profil">
     <h1>Yasser El Karch</h1>
     <p>Cybersecurity Auditor & Penetration Tester</p>
-    <a href="cv.pdf" class="btn-download" download>Télécharger le CV (PDF)</a>
+    <a href="CV.pdf" class="btn-download" download>Télécharger le CV (PDF)</a>
   </header>
 
   <section>
     <div class="content-box">
       <h2>À propos</h2>
       <p>
-        Ingénieur en télécommunications et réseaux spécialisé en cybersécurité, actuellement auditeur SI à la Banque Centrale Populaire. Passionné par le pentest, je m'efforce de maîtriser à la fois les compétences offensives et défensives pour renforcer les infrastructures critiques. Objectif : contribuer à des projets de cybersécurité de haut niveau.
+          Ingénieur en Télécommunications et Réseaux, avec une spécialisation en cybersécurité, j’occupe actuellement le poste d’Auditeur SI à l’Inspection Générale de la Banque Centrale Populaire. Mon objectif est de me spécialiser davantage en tests d’intrusion et en audit de sécurité des systèmes d'information. Je souhaite approfondir mes compétences techniques et méthodologiques pour intervenir sur des missions d’évaluation de la sécurité, d’identification de vulnérabilités, et de renforcement des infrastructures critiques. Mon ambition est de contribuer activement à des projets de sécurité offensifs et défensifs de haut niveau.
       </p>
     </div>
 
     <div class="content-box">
       <h2>Compétences</h2>
       <ul>
-        <li>Audit de sécurité des systèmes d'information</li>
-        <li>Pentest (Kali Linux, Burp Suite, Metasploit)</li>
-        <li>Normes ISO 27001, COBIT, ITIL</li>
-        <li>Détection et analyse de vulnérabilités</li>
-        <li>Langages : Python, Bash, HTML/CSS</li>
+        <li><strong>Services et gestion des systèmes :</strong> Tenable Identity Exposure, Active Directory, gestion des utilisateurs et des permissions, eFront ERM</li>
+        <li><strong>Systèmes d'exploitation :</strong> Windows, Linux (Ubuntu, Kali, RedHat)</li>
+        <li><strong>Outils et logiciels :</strong> Metasploit, Nmap, Nikto, BurpSuite, Nessus, Gobuster, Wireshark, sqlmap, Matlab, Atoll, Gns3, Ms Project, EVE-ng</li>
+        <li><strong>Langages :</strong> C, Bash, Java, SQL (MySQL) et Python</li>
+        <li><strong>Virtualisation :</strong> VMware, VirtualBox, GNS3, EVE-NG</li>
+        <li><strong>Réseaux :</strong> TCP/IP, SSH, routage, firewalls, WAN, VoIP, Technologies des Réseaux</li>
       </ul>
     </div>
 
     <div class="content-box">
       <h2>Expériences</h2>
       <ul>
-        <li>Auditeur SI – Banque Centrale Populaire (depuis 2024)</li>
-        <li>Stage Pentest – Projet de test de vulnérabilité Web (2023)</li>
+        <li>
+          <strong>Auditeur SI (CDI)</strong>
+          <span class="date">Décembre 2024 - Présent</span><br>
+          Gestion et suivi des recommandations issues des audits de sécurité sur la plateforme eFront ERM.<br>
+          Réalisation de scans de vulnérabilités sur les applications web.<br>
+          Évaluation de la sécurité des systèmes informatiques.<br> 
+          Participation aux missions d'audit et d'inspection SI.<br>
+        </li>
+        <li>
+          <strong>Consultant cybersécurité – Banque Centrale Populaire | Supervision d’Active Directory</strong>
+          <span class="date">Fév. 2024 – Août 2024</span><br>
+          Mise en place d’un environnement Active Directory.<br> 
+          Implémentation réussie de Tenable Identity Exposure pour l'identification et la gestion des expositions potentielles dans Active Directory.<br> 
+          Intégration efficace de QRadar en tant que SIEM pour renforcer la sécurité de l'environnement Active Directory.<br> 
+          Pentesting ciblé d'Active Directory pour la détection et l'exploitation des vulnérabilités.<br>
+        </li>
+        <li>
+          <strong>Stagiaire PFA – Inwi | IPsec IKEv2 site-to-site VPN</strong>
+          <span class="date">Avril – Juillet 2022</span><br>
+          Mise en place d’une architecture de haute disponibilité VPN site-à-site.<br> 
+          Développement des compétences en analyse des risques.<br> 
+          Configuration des routeurs, des pare-feu et des équipements de sécurité réseaux.<br> 
+          Gestion des clés de chiffrement et d'authentification.<br>
+        </li>
+        <li>
+          <strong>Stage d’observation – ONEE L'Office National de l'Électricité et de l'Eau potable</strong>
+          <span class="date">Août 2021</span><br>
+          Introduction au monde de l'entreprise et découverte des serveurs virtuels et de l’architecture réseaux de l’entreprise.
+        </li>
       </ul>
     </div>
-
+    
+    <div class="content-box">
+      <h2>Formation</h2>
+      <ul>
+        <li>Ingénieur en Télécommunications et Réseaux - École nationale des sciences appliquées de Tanger <span class="badge">2024</span></li>
+        <li>Baccalauréat Sciences physiques - Groupe Scolaire Anisse <span class="badge">2018</span></li>
+      </ul>
+    </div>
+    
     <div class="content-box">
       <h2>Certifications</h2>
       <ul>
-        <li>ITIL 4 Foundation</li>
-        <li>ISO/IEC 27001 Foundation (prévu)</li>
+        <li>Ethical Hacking Essentials – EC-Council <span class="badge">2023</span></li>
+        <li>Junior Penetration Tester – TryHackMe <span class="badge">2023</span></li>
+        <li>Practical Ethical Hacking – TCM Security <span class="badge">2023</span></li>
+        <li>CCNA 1, 2, 3 – Cisco <span class="badge">2022</span></li>
+        <li>Certified Cybersecurity - CC (ISC)² <span class="badge">2022</span></li>
       </ul>
     </div>
 
     <div class="content-box">
       <h2>Projets</h2>
       <ul>
-        <li>Supervision Active Directory – Projet de fin d’études</li>
-        <li>Audit sécurité d’un site e-commerce</li>
-        <li>Script d’automatisation de scan de vulnérabilités</li>
+        <li>Web penetration testing using Metasploit, Nessus and BurpSuite</li>
+        <li>Simulation des attaques sur un système d’information sécurisé et l’intégration d’un système SIEM pour renforcer la sécurité</li>
+        <li>Mise en place d’un réseau d’entreprise : Configuration du réseau et gestion des adresses IP</li>
+        <li>Mise en place d’un système VOIP sous Asterisk</li> 
       </ul>
     </div>
 
