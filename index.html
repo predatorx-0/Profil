@@ -4,9 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Yasser El Karch - CV</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Roboto', sans-serif;
       background-color: #1e1e2f;
       margin: 0;
       padding: 0;
@@ -23,11 +24,13 @@
     }
 
     h1 {
+      font-family: 'Poppins', sans-serif;
       color: #ff4444;
-      font-size: 36px;
-      margin-bottom: 5px;
+      font-size: 48px;
+      margin-bottom: 10px;
       text-align: center;
       text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+      letter-spacing: 2px;
     }
 
     h2.section-title {
@@ -94,12 +97,6 @@
       margin-bottom: 20px;
     }
 
-    /* Smooth Scroll */
-    html {
-      scroll-behavior: smooth;
-    }
-
-    /* Button Styling */
     .btn {
       display: inline-block;
       background-color: #ff4444;
@@ -110,11 +107,19 @@
       font-size: 16px;
       text-align: center;
       transition: background-color 0.3s;
+      margin-top: 20px;
+      display: block;
+      text-align: center;
     }
 
     .btn:hover {
       background-color: #ffcc00;
     }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
   </style>
 </head>
 <body>
@@ -126,11 +131,10 @@
         <strong>Téléphone :</strong> +212 689 217 252<br>
         <strong>LinkedIn :</strong> <a href="https://www.linkedin.com/in/yasser-el-karch/">linkedin.com/in/yasser-el-karch</a><br>
         <strong>GitHub :</strong> <a href="https://github.com/predatorx-0">github.com/predatorx-0</a><br>
-        <a href="#profil" class="btn">Voir Profil</a>
       </p>
     </div>
 
-    <h2 class="section-title" id="profil">Profil</h2>
+    <h2 class="section-title">Profil</h2>
     <p>
       Ingénieur en Télécommunications et Réseaux, avec une spécialisation en cybersécurité, j’occupe actuellement le poste d’Auditeur SI à l’Inspection Générale de la Banque Centrale Populaire. Mon objectif est de me spécialiser davantage en tests d’intrusion et en audit de sécurité des systèmes d'information. Je souhaite approfondir mes compétences techniques et méthodologiques pour intervenir sur des missions d’évaluation de la sécurité, d’identification de vulnérabilités, et de renforcement des infrastructures critiques.
     </p>
@@ -153,20 +157,35 @@
         Gestion et suivi des recommandations issues des audits de sécurité sur la plateforme eFront ERM.<br>
         Réalisation de scans de vulnérabilités sur les applications web.<br>
         Évaluation de la sécurité des systèmes informatiques.<br>
-        Participation aux missions d'audit et d'inspection SI.<br>
+        Participation aux missions d'audit et d'inspection SI.
       </li>
       <li>
         <strong>Consultant cybersécurité – Banque Centrale Populaire | Supervision d’Active Directory</strong>
         <span class="date">Fév. 2024 – Août 2024</span><br>
         Mise en place d’un environnement Active Directory.<br>
         Implémentation réussie de Tenable Identity Exposure pour l'identification et la gestion des expositions potentielles.<br>
-        Pentesting ciblé d'Active Directory.<br>
+        Pentesting ciblé d'Active Directory.
+      </li>
+      <li>
+        <strong>Stagiaire PFA – Inwi | IPsec IKEv2 site to site vpn</strong>
+        <span class="date">Avril – Juillet 2022</span><br>
+        Mise en place d’une architecture de haute disponibilité VPN site à site.<br>
+        Développement des compétences en analyse des risques.<br>
+        Configuration des routeurs, des pare-feu et des équipements de sécurité réseaux des deux sites qui prennent en charge IPSec.
+      </li>
+      <li>
+        <strong>Stage d’observation – ONEE L'Office National de l'Électricité et de l'Eau potable </strong>
+        <span class="date">Août 2021</span><br>
+        Introduction au monde de l'entreprise et découverte des serveurs virtuels et de l’architecture réseaux de l’entreprise.
       </li>
     </ul>
 
     <h2 class="section-title">Formations</h2>
     <ul>
-      <li><strong>ENSA Tanger – Diplôme d’ingénieur en réseaux & télécoms</strong><span class="date">2018 – 2023</span></li>
+      <li><strong>ENSA Tanger – Diplôme d’ingénieur en réseaux & télécoms</strong>
+        <span class="date">2018 – 2023</span><br>
+        Spécialisation : Cybersécurité, Audit Sécurité, Penetration tester
+      </li>
     </ul>
 
     <h2 class="section-title">Certifications</h2>
@@ -174,6 +193,8 @@
       <li>Ethical Hacking Essentials – EC-Council <span class="badge">2023</span></li>
       <li>Junior Penetration Tester – TryHackMe <span class="badge">2023</span></li>
       <li>Practical Ethical Hacking – TCM Security <span class="badge">2023</span></li>
+      <li>CCNA 1, 2, 3 – Cisco <span class="badge">2022</span></li>
+      <li>Certified Cybersecurity - CC (ISC)² <span class="badge">2022</span></li>
     </ul>
 
     <h2 class="section-title">Langues</h2>
@@ -182,18 +203,9 @@
       <li>Français : B2</li>
       <li>Anglais : C1</li>
     </ul>
+
+    <a href="CV.pdf" class="btn" download>Télécharger le CV (PDF)</a>
   </div>
 
-  <script>
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
-      });
-    });
-  </script>
 </body>
 </html>
