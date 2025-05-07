@@ -7,36 +7,45 @@
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f2f6fa;
+      background-color: #1e1e2f;
       margin: 0;
       padding: 0;
-      color: #222;
+      color: #e6e6e6;
     }
 
     .container {
       max-width: 950px;
       margin: 40px auto;
-      background-color: #ffffff;
+      background-color: #2c2f47;
       padding: 40px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
       border-radius: 10px;
     }
 
     h1 {
-      color: #0a3d62;
-      font-size: 32px;
+      color: #ff4444;
+      font-size: 36px;
       margin-bottom: 5px;
+      text-align: center;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     }
 
     h2.section-title {
-      border-bottom: 2px solid #0a3d62;
+      border-bottom: 2px solid #ff4444;
       padding-bottom: 5px;
-      color: #0a3d62;
+      color: #ff4444;
       margin-top: 30px;
+      font-size: 24px;
+      transition: color 0.3s ease-in-out;
+    }
+
+    h2.section-title:hover {
+      color: #ffcc00;
     }
 
     p, li {
-      line-height: 1.6;
+      line-height: 1.8;
+      font-size: 16px;
     }
 
     ul {
@@ -45,100 +54,119 @@
     }
 
     li {
-      margin-bottom: 10px;
+      margin-bottom: 12px;
+      transition: transform 0.3s ease, color 0.3s;
+    }
+
+    li:hover {
+      transform: scale(1.05);
+      color: #ffcc00;
     }
 
     .date {
       float: right;
-      color: #666;
+      color: #bbb;
       font-size: 14px;
     }
 
     a {
-      color: #0a3d62;
+      color: #ff4444;
       text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
     }
 
-    .contact-info {
-      margin-bottom: 20px;
+    a:hover {
+      color: #ffcc00;
     }
 
     .badge {
       display: inline-block;
-      background-color: #0a3d62;
+      background-color: #ff4444;
       color: white;
       border-radius: 5px;
       padding: 2px 8px;
       font-size: 12px;
       margin-left: 8px;
     }
+
+    .contact-info {
+      margin-bottom: 20px;
+    }
+
+    /* Smooth Scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Button Styling */
+    .btn {
+      display: inline-block;
+      background-color: #ff4444;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 16px;
+      text-align: center;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #ffcc00;
+    }
   </style>
 </head>
 <body>
+
   <div class="container">
     <h1>Yasser El Karch</h1>
     <div class="contact-info">
       <p><strong>Email :</strong> yasser.elkarch@gmail.com<br>
         <strong>Téléphone :</strong> +212 689 217 252<br>
         <strong>LinkedIn :</strong> <a href="https://www.linkedin.com/in/yasser-el-karch/">linkedin.com/in/yasser-el-karch</a><br>
-        <strong>GitHub :</strong> <a href="https://github.com/predatorx-0">github.com/predatorx-0</a>
+        <strong>GitHub :</strong> <a href="https://github.com/predatorx-0">github.com/predatorx-0</a><br>
+        <a href="#profil" class="btn">Voir Profil</a>
       </p>
     </div>
 
-    <h2 class="section-title">Profil</h2>
+    <h2 class="section-title" id="profil">Profil</h2>
     <p>
-      Ingénieur en Télécommunications et Réseaux, avec une spécialisation en cybersécurité, j’occupe actuellement le poste d’Auditeur SI à l’Inspection Générale de la Banque Centrale Populaire. Mon objectif est de me spécialiser davantage en tests d’intrusion et en audit de sécurité des systèmes d'information. je souhaite approfondir mes compétences techniques et méthodologiques pour intervenir sur des missions d’évaluation de la sécurité, d’identification de vulnérabilités, et de renforcement des infrastructures critiques. Mon ambition est de contribuer activement à des projets de sécurité offensifs et défensifs de haut niveau.
-
+      Ingénieur en Télécommunications et Réseaux, avec une spécialisation en cybersécurité, j’occupe actuellement le poste d’Auditeur SI à l’Inspection Générale de la Banque Centrale Populaire. Mon objectif est de me spécialiser davantage en tests d’intrusion et en audit de sécurité des systèmes d'information. Je souhaite approfondir mes compétences techniques et méthodologiques pour intervenir sur des missions d’évaluation de la sécurité, d’identification de vulnérabilités, et de renforcement des infrastructures critiques.
     </p>
 
     <h2 class="section-title">Compétences techniques</h2>
     <ul>
-      <li><strong>Services et gestion des systèmes :</strong> Tenable Identity Exposure, Active Directory, gestion des utilisateurs et des permissions , eFront ERM</li>
+      <li><strong>Services et gestion des systèmes :</strong> Tenable Identity Exposure, Active Directory, gestion des utilisateurs et des permissions, eFront ERM</li>
       <li><strong>Systèmes d'exploitation :</strong> Windows, Linux (Ubuntu, Kali, RedHat)</li>
-      <li><strong>Outils et logiciels :</strong> Metasploit, Nmap, Nikto, BurpSuit, Nessus, Gobuster, Wireshark, sqlmap, Matlab, Atoll, Gns3, Ms Project et EVE-ng </li>
-      <li><strong>Langages :</strong> C, Bash, Java, SQL (MySQL) et Python.</li>
+      <li><strong>Outils et logiciels :</strong> Metasploit, Nmap, Nikto, BurpSuite, Nessus, Gobuster, Wireshark, sqlmap, Matlab, Atoll, Gns3, Ms Project et EVE-ng</li>
+      <li><strong>Langages :</strong> C, Bash, Java, SQL (MySQL) et Python</li>
       <li><strong>Virtualisation :</strong> VMware, VirtualBox, GNS3, EVE-NG</li>
-      <li><strong>Réseaux :</strong> tcp/ip , ssh , routage , firewalls, WAN, VoiIP, Technologie des Réseaux </li>
+      <li><strong>Réseaux :</strong> TCP/IP, SSH, routage, firewalls, WAN, VoIP, Technologie des Réseaux</li>
     </ul>
+
     <h2 class="section-title">Expériences professionnelles</h2>
     <ul>
-        <li>
-        <strong> Auditeur SI (CDI) </strong>
+      <li>
+        <strong>Auditeur SI (CDI)</strong>
         <span class="date">Décembre 2024 - Présent</span><br>
         Gestion et suivi des recommandations issues des audits de sécurité sur la plateforme eFront ERM.<br>
         Réalisation de scans de vulnérabilités sur les applications web.<br>
-        Évaluation de la sécurité des systèmes informatiques.<br> 
+        Évaluation de la sécurité des systèmes informatiques.<br>
         Participation aux missions d'audit et d'inspection SI.<br>
       </li>
       <li>
         <strong>Consultant cybersécurité – Banque Centrale Populaire | Supervision d’Active Directory</strong>
         <span class="date">Fév. 2024 – Août 2024</span><br>
-        Mettre en place un environnement Active Directory.<br> 
-        Implémentation réussie de Tenable Identity Exposure pour l'identification et la gestion des expositions potentielles dans Active Directory.<br> 
-        Intégration efficace de QRadar en tant que SIEM pour renforcer la sécurité de l'environnement Active Directory.<br> 
-        Pentesting ciblé d'Active Directory pour la détection et l'exploitation des vulnérabilités, illustrant une compétence avancée dans l'évaluation de la sécurité des systèmes informatiques.<br>
-      </li>
-      <li>
-        <strong>Stagiaire PFA – Inwi | IPsec IKEv2 site to site vpn</strong>
-        <span class="date">Avril – Juillet 2022</span><br>
-        Mise en place d’une architecture de haute disponibilité VPN site à site.<br> 
-        Développement des compétences en analyse des risques.<br> 
-        Configuration des routeurs, des pare-feu et des équipements de sécurité réseaux des deux sites qui prennent en charge IPSec.<br> 
-        Gestion des clés de chiffrement et d'authentification.<br>
-      </li>
-      <li>
-        <strong>Stage d’observation – ONEE L'Office National de l'Électricité et de l'Eau potable </strong>
-        <span class="date">Août 2021</span><br>
-       Introduction au monde de l'entreprise Découverte des Serveurs virtuels et de l’architecture Réseaux de l’entreprise.
+        Mise en place d’un environnement Active Directory.<br>
+        Implémentation réussie de Tenable Identity Exposure pour l'identification et la gestion des expositions potentielles.<br>
+        Pentesting ciblé d'Active Directory.<br>
       </li>
     </ul>
 
     <h2 class="section-title">Formations</h2>
     <ul>
-      <li><strong>ENSA Tanger – Diplôme d’ingénieur en réseaux & télécoms</strong>
-        <span class="date">2018 – 2023</span><br>
-        Spécialisation : Cybersécurité, Audit Sécurité, Penetration tester  
-      </li>
+      <li><strong>ENSA Tanger – Diplôme d’ingénieur en réseaux & télécoms</strong><span class="date">2018 – 2023</span></li>
     </ul>
 
     <h2 class="section-title">Certifications</h2>
@@ -146,16 +174,26 @@
       <li>Ethical Hacking Essentials – EC-Council <span class="badge">2023</span></li>
       <li>Junior Penetration Tester – TryHackMe <span class="badge">2023</span></li>
       <li>Practical Ethical Hacking – TCM Security <span class="badge">2023</span></li>
-      <li>CCNA 1, 2, 3 – Cisco <span class="badge">2022</span></li>
-      <li>Certified Cybersecurity - CC (ISC)² <span class="badge">2022</span></li>
     </ul>
 
     <h2 class="section-title">Langues</h2>
     <ul>
       <li>Arabe : Langue maternelle</li>
-      <li>Français : B2 </li>
-      <li>Anglais : C1 </li>
+      <li>Français : B2</li>
+      <li>Anglais : C1</li>
     </ul>
   </div>
+
+  <script>
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
 </body>
-</html> 
+</html>
