@@ -5,126 +5,130 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Yasser El Karch - CV</title>
   <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --accent-yellow: #dc2f02; /* ⇦ Change cette valeur pour modifier le jaune */
-    }
+<style>
+  :root {
+    --main-color: #d00000;
+    --hover-color: #faa307;
+  }
 
-    body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #121212;
-      margin: 0;
-      padding: 0;
-      color: #e0e0e0;
-    }
+  body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #121212;
+    margin: 0;
+    padding: 0;
+    color: #e0e0e0;
+  }
 
-    .container {
-      max-width: 950px;
-      margin: 40px auto;
-      background-color: #1e1e1e;
-      padding: 40px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      border-radius: 10px;
-    }
+  .container {
+    max-width: 950px;
+    margin: 40px auto;
+    background-color: #1e1e1e;
+    padding: 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
 
-    h1 {
-      font-family: 'Major Mono Display', monospace;
-      color: var(--accent-yellow);
-      font-size: 48px;
-      margin-bottom: 50px; /* ⇦ Plus d’espace */
-      text-align: center;
-      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-      letter-spacing: 2px;
-    }
+  h1 {
+    font-family: 'Major Mono Display', monospace;
+    color: var(--main-color);
+    font-size: 48px;
+    margin-bottom: 60px; /* ⇦ Plus d’espace */
+    text-align: center;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
+  }
 
-    h2.section-title {
-      border-bottom: 2px solid var(--accent-yellow);
-      padding-bottom: 5px;
-      color: var(--accent-yellow);
-      margin-top: 30px;
-      font-size: 24px;
-      transition: color 0.3s ease-in-out;
-    }
+  h2.section-title {
+    border-bottom: 2px solid var(--main-color);
+    padding-bottom: 5px;
+    color: var(--main-color);
+    margin-top: 30px;
+    font-size: 24px;
+    transition: color 0.3s ease-in-out;
+  }
 
-    h2.section-title:hover {
-      color: #ffff00;
-    }
+  h2.section-title:hover {
+    color: var(--hover-color);
+  }
 
-    p, li {
-      line-height: 1.8;
-      font-size: 16px;
-    }
+  p, li {
+    line-height: 1.8;
+    font-size: 16px;
+  }
 
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
 
-    li {
-      margin-bottom: 12px;
-      transition: transform 0.3s ease, color 0.3s;
-    }
+  li {
+    margin-bottom: 12px;
+    transition: transform 0.3s ease, color 0.3s;
+    color: inherit;
+  }
 
-    li:hover {
-      transform: scale(1.05);
-      color: var(--accent-yellow);
-    }
+  li:hover {
+    transform: scale(1.05);
+    color: var(--hover-color);
+  }
 
-    .date {
-      float: right;
-      color: #bbb;
-      font-size: 14px;
-    }
+  .date {
+    float: right;
+    color: #bbb;
+    font-size: 14px;
+  }
 
-    a {
-      color: var(--accent-yellow);
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s ease;
-    }
+  a {
+    color: var(--main-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
 
-    a:hover {
-      color: #e85d04;
-    }
+  a:hover {
+    color: var(--hover-color);
+  }
 
-    .badge {
-      display: inline-block;
-      background-color: var(--accent-yellow);
-      color: black;
-      border-radius: 5px;
-      padding: 2px 8px;
-      font-size: 12px;
-      margin-left: 8px;
-    }
+  .badge {
+    display: inline-block;
+    background-color: var(--main-color);
+    color: black;
+    border-radius: 5px;
+    padding: 2px 8px;
+    font-size: 12px;
+    margin-left: 8px;
+  }
 
-    .contact-info {
-      margin-bottom: 20px;
-    }
+  .contact-info {
+    margin-bottom: 30px; /* ⇦ Plus d’espace */
+    text-align: center;
+  }
 
-    .btn {
-      display: inline-block;
-      background-color: var(--accent-yellow);
-      color: black;
-      padding: 10px 20px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-size: 16px;
-      text-align: center;
-      transition: background-color 0.3s;
-      margin-top: 20px;
-      display: block;
-      text-align: center;
-    }
+  .btn {
+    display: inline-block;
+    background-color: var(--main-color);
+    color: black;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    text-align: center;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+    display: block;
+    text-align: center;
+  }
 
-    .btn:hover {
-      background-color: #ffbb33;
-    }
+  .btn:hover {
+    background-color: var(--hover-color);
+    color: black;
+  }
 
-    html {
-      scroll-behavior: smooth;
-    }
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
 
-  </style>
 </head>
 <body>
 
@@ -222,3 +226,4 @@
 
 </body>
 </
+</html>
