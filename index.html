@@ -10,20 +10,27 @@
     :root {
       --main-color: #d00000;
       --hover-color: #faa307;
+      --bg-color: #121212;
+      --container-bg: #1e1e1e;
+      --text-color: #e0e0e0;
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
       font-family: 'Roboto', sans-serif;
-      background-color: #121212;
+      background-color: var(--bg-color);
       margin: 0;
       padding: 0;
-      color: #e0e0e0;
+      color: var(--text-color);
     }
 
     .container {
       max-width: 950px;
       margin: 40px auto;
-      background-color: #1e1e1e;
+      background-color: var(--container-bg);
       padding: 40px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
       border-radius: 10px;
@@ -138,21 +145,34 @@
     html {
       scroll-behavior: smooth;
     }
+
+    @media screen and (max-width: 768px) {
+      .container {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 36px;
+      }
+
+      h2.section-title {
+        font-size: 20px;
+      }
+    }
   </style>
 </head>
 <body>
-
   <div class="container">
     <h1 class="hacker-title">Yasser El Karch</h1>
 
     <div class="contact-info">
-      <p><strong>Email :</strong> yasser.elkarch@gmail.com<br>
-        <strong>Téléphone :</strong> +212 689 217 252<br>
-        <strong>LinkedIn :</strong> <a href="https://www.linkedin.com/in/yasser-el-karch/">linkedin.com/in/yasser-el-karch</a><br>
-        <strong>GitHub :</strong> <a href="https://github.com/predatorx-0">github.com/predatorx-0</a><br>
+      <p><strong>Email :</strong> <a href="mailto:yasser.elkarch@gmail.com">yasser.elkarch@gmail.com</a><br>
+        <strong>Téléphone :</strong> <a href="tel:+212689217252">+212 689 217 252</a><br>
+        <strong>LinkedIn :</strong> <a href="https://www.linkedin.com/in/yasser-el-karch/" target="_blank" rel="noopener">linkedin.com/in/yasser-el-karch</a><br>
+        <strong>GitHub :</strong> <a href="https://github.com/predatorx-0" target="_blank" rel="noopener">github.com/predatorx-0</a><br>
       </p>
     </div>
-    
+
     <h2 class="section-title">Profil</h2>
     <p>
       Ingénieur en Télécommunications et Réseaux, avec une spécialisation en cybersécurité, j’occupe actuellement le poste d’Auditeur SI à l’Inspection Générale de la Banque Centrale Populaire. Mon objectif est de me spécialiser davantage en tests d’intrusion et en audit de sécurité des systèmes d'information. Je souhaite approfondir mes compétences techniques et méthodologiques pour intervenir sur des missions d’évaluation de la sécurité, d’identification de vulnérabilités, et de renforcement des infrastructures critiques.
@@ -235,39 +255,38 @@
   </div>
 
 <script>
-    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    let interval = null;
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  let interval = null;
 
-    document.addEventListener("DOMContentLoaded", () => {
-      const hackerTitle = document.querySelector(".hacker-title");
-      const originalText = hackerTitle.innerText;
+  document.addEventListener("DOMContentLoaded", () => {
+    const hackerTitle = document.querySelector(".hacker-title");
+    const originalText = hackerTitle.innerText;
 
-      hackerTitle.addEventListener("mouseover", () => {
-        let iteration = 0;
-        clearInterval(interval);
+    hackerTitle.addEventListener("mouseover", () => {
+      let iteration = 0;
+      clearInterval(interval);
 
-        interval = setInterval(() => {
-          const newText = originalText
-            .split("")
-            .map((char, index) => {
-              if (char === " ") return " ";
-              if (index < iteration) return originalText[index];
-              return letters[Math.floor(Math.random() * 26)];
-            })
-            .join("");
+      interval = setInterval(() => {
+        const newText = originalText
+          .split("")
+          .map((char, index) => {
+            if (char === " ") return " ";
+            if (index < iteration) return originalText[index];
+            return letters[Math.floor(Math.random() * 26)];
+          })
+          .join("");
 
-          hackerTitle.innerText = newText;
+        hackerTitle.innerText = newText;
 
-          if (iteration >= originalText.length) {
-            clearInterval(interval);
-            hackerTitle.innerText = originalText;
-          }
+        if (iteration >= originalText.length) {
+          clearInterval(interval);
+          hackerTitle.innerText = originalText;
+        }
 
-          iteration += 1 / 2;
-        }, 30);
-      });
+        iteration += 1 / 2;
+      }, 30);
     });
-  </script>
-
+  });
+</script>
 </body>
 </html>
