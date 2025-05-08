@@ -234,40 +234,40 @@
     <a href="CV.pdf" class="btn" download>Télécharger le CV (PDF)</a>
   </div>
 
-</body>
-  <script>
+<script>
     const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     let interval = null;
 
-    document.querySelector(".hacker-title").addEventListener("mouseover", event => {
-      let iteration = 0;
-      const target = event.target;
-      const originalText = target.innerText;
-      
-      clearInterval(interval);
+    document.addEventListener("DOMContentLoaded", () => {
+      const hackerTitle = document.querySelector(".hacker-title");
+      const originalText = hackerTitle.innerText;
 
-      interval = setInterval(() => {
-        target.innerText = target.innerText
-          .split("")
-          .map((letter, index) => {
-            if (letter === " ") return " ";
-            if (index < iteration) {
-              return originalText[index];
-            }
-            return letters[Math.floor(Math.random() * 26)];
-          })
-          .join("");
+      hackerTitle.addEventListener("mouseover", () => {
+        let iteration = 0;
+        clearInterval(interval);
 
-        if (iteration >= originalText.length) {
-          clearInterval(interval);
-        }
+        interval = setInterval(() => {
+          const newText = originalText
+            .split("")
+            .map((char, index) => {
+              if (char === " ") return " ";
+              if (index < iteration) return originalText[index];
+              return letters[Math.floor(Math.random() * 26)];
+            })
+            .join("");
 
-        iteration += 1 / 2;
-      }, 30);
+          hackerTitle.innerText = newText;
+
+          if (iteration >= originalText.length) {
+            clearInterval(interval);
+            hackerTitle.innerText = originalText;
+          }
+
+          iteration += 1 / 2;
+        }, 30);
+      });
     });
   </script>
 
 </body>
-</html>
-</
 </html>
