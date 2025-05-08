@@ -5,135 +5,145 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Yasser El Karch - CV</title>
   <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --main-color: #d00000;
-    --hover-color: #faa307;
-  }
 
-  body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #121212;
-    margin: 0;
-    padding: 0;
-    color: #e0e0e0;
-  }
+  <style>
+    :root {
+      --main-color: #d00000;
+      --hover-color: #faa307;
+    }
 
-  .container {
-    max-width: 950px;
-    margin: 40px auto;
-    background-color: #1e1e1e;
-    padding: 40px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-  }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #121212;
+      margin: 0;
+      padding: 0;
+      color: #e0e0e0;
+    }
 
-  h1 {
-    font-family: 'Major Mono Display', monospace;
-    color: var(--main-color);
-    font-size: 48px;
-    margin-bottom: 60px; /* ⇦ Plus d’espace */
-    text-align: center;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-    letter-spacing: 2px;
-  }
+    .container {
+      max-width: 950px;
+      margin: 40px auto;
+      background-color: #1e1e1e;
+      padding: 40px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
 
-  h2.section-title {
-    border-bottom: 2px solid var(--main-color);
-    padding-bottom: 5px;
-    color: var(--main-color);
-    margin-top: 30px;
-    font-size: 24px;
-    transition: color 0.3s ease-in-out;
-  }
+    .hacker-title {
+      color: var(--main-color);
+      transition: color 0.3s;
+      cursor: pointer;
+      user-select: none;
+    }
 
-  h2.section-title:hover {
-    color: var(--hover-color);
-  }
+    .hacker-title:hover {
+      color: var(--hover-color);
+      text-shadow: 0 0 5px var(--hover-color), 0 0 15px var(--hover-color);
+    }
 
-  p, li {
-    line-height: 1.8;
-    font-size: 16px;
-  }
+    h1 {
+      font-family: 'Major Mono Display', monospace;
+      color: var(--main-color);
+      font-size: 48px;
+      margin-bottom: 60px;
+      text-align: center;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+      letter-spacing: 2px;
+    }
 
-  ul {
-    list-style: none;
-    padding-left: 0;
-  }
+    h2.section-title {
+      border-bottom: 2px solid var(--main-color);
+      padding-bottom: 5px;
+      color: var(--main-color);
+      margin-top: 30px;
+      font-size: 24px;
+      transition: color 0.3s ease-in-out;
+    }
 
-  li {
-    margin-bottom: 12px;
-    transition: transform 0.3s ease, color 0.3s;
-    color: inherit;
-  }
+    h2.section-title:hover {
+      color: var(--hover-color);
+    }
 
-  li:hover {
-    transform: scale(1.05);
-    color: var(--hover-color);
-  }
+    p, li {
+      line-height: 1.8;
+      font-size: 16px;
+    }
 
-  .date {
-    float: right;
-    color: #bbb;
-    font-size: 14px;
-  }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
 
-  a {
-    color: var(--main-color);
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-  }
+    li {
+      margin-bottom: 12px;
+      transition: transform 0.3s ease, color 0.3s;
+      color: inherit;
+    }
 
-  a:hover {
-    color: var(--hover-color);
-  }
+    li:hover {
+      transform: scale(1.05);
+      color: var(--hover-color);
+    }
 
-  .badge {
-    display: inline-block;
-    background-color: var(--main-color);
-    color: black;
-    border-radius: 5px;
-    padding: 2px 8px;
-    font-size: 12px;
-    margin-left: 8px;
-  }
+    .date {
+      float: right;
+      color: #bbb;
+      font-size: 14px;
+    }
 
-  .contact-info {
-    margin-bottom: 30px; /* ⇦ Plus d’espace */
-    text-align: center;
-  }
+    a {
+      color: var(--main-color);
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
 
-  .btn {
-    display: inline-block;
-    background-color: var(--main-color);
-    color: black;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 16px;
-    text-align: center;
-    transition: background-color 0.3s;
-    margin-top: 20px;
-    display: block;
-    text-align: center;
-  }
+    a:hover {
+      color: var(--hover-color);
+    }
 
-  .btn:hover {
-    background-color: var(--hover-color);
-    color: black;
-  }
+    .badge {
+      display: inline-block;
+      background-color: var(--main-color);
+      color: black;
+      border-radius: 5px;
+      padding: 2px 8px;
+      font-size: 12px;
+      margin-left: 8px;
+    }
 
-  html {
-    scroll-behavior: smooth;
-  }
-</style>
+    .contact-info {
+      margin-bottom: 30px;
+      text-align: center;
+    }
 
+    .btn {
+      display: block;
+      background-color: var(--main-color);
+      color: black;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 16px;
+      text-align: center;
+      transition: background-color 0.3s;
+      margin-top: 20px;
+    }
+
+    .btn:hover {
+      background-color: var(--hover-color);
+      color: black;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
 </head>
 <body>
 
   <div class="container">
-    <h1>Yasser El Karch</h1>
+    <h1 class="hacker-title">Yasser El Karch</h1>
 
     <div class="contact-info">
       <p><strong>Email :</strong> yasser.elkarch@gmail.com<br>
@@ -225,5 +235,39 @@
   </div>
 
 </body>
+  <script>
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let interval = null;
+
+    document.querySelector(".hacker-title").addEventListener("mouseover", event => {
+      let iteration = 0;
+      const target = event.target;
+      const originalText = target.innerText;
+      
+      clearInterval(interval);
+
+      interval = setInterval(() => {
+        target.innerText = target.innerText
+          .split("")
+          .map((letter, index) => {
+            if (letter === " ") return " ";
+            if (index < iteration) {
+              return originalText[index];
+            }
+            return letters[Math.floor(Math.random() * 26)];
+          })
+          .join("");
+
+        if (iteration >= originalText.length) {
+          clearInterval(interval);
+        }
+
+        iteration += 1 / 2;
+      }, 30);
+    });
+  </script>
+
+</body>
+</html>
 </
 </html>
