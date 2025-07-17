@@ -44,8 +44,10 @@
   }
 
   .hacker-title:hover {
-    color: var(--hover-color);
-  }
+  color: var(--hover-color);
+  text-shadow: 0 0 5px var(--hover-color), 0 0 10px var(--hover-color);
+}
+
 
   h1 {
     font-family: 'Major Mono Display', monospace;
@@ -67,6 +69,12 @@
     line-height: 1.7;
     font-size: 16px;
   }
+    
+    li:hover {
+      transform: scale(1.03);
+      color: var(--hover-color);
+      transition: all 0.3s ease;
+    }
 
   ul {
     list-style: none;
