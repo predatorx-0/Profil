@@ -1,347 +1,1560 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Yasser El Karch - Ingénieur Cybersécurité</title>
-  <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-
-  <style>
-  :root {
-    --main-color: #0066cc;
-    --hover-color: #004999;
-    --bg-color: #f9f9f9;
-    --container-bg: #ffffff;
-    --text-color: #333333;
-  }
-
-  * {
-    box-sizing: border-box;
-  }
-
-  body {
-    font-family: 'Roboto', sans-serif;
-    background-color: var(--bg-color);
-    margin: 0;
-    padding: 0;
-    color: var(--text-color);
-  }
-
-  .container {
-    max-width: 950px;
-    margin: 40px auto;
-    background-color: var(--container-bg);
-    padding: 40px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    border-radius: 10px;
-  }
-
-  .hacker-title {
-    color: var(--main-color);
-    transition: color 0.3s;
-    cursor: pointer;
-    user-select: none;
-  }
-
-  .hacker-title:hover {
-  color: var(--hover-color);
-  text-shadow: 0 0 5px var(--hover-color), 0 0 10px var(--hover-color);
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Yasser El Karch — Cybersecurity Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Clash+Display:wght@400;500;600;700&family=Cabinet+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   CSS VARIABLES — DARK / LIGHT THEMES
+   ============================================================ */
+:root {
+  --tr: all .35s cubic-bezier(.4,0,.2,1);
+}
+[data-theme="dark"] {
+  --bg:         #050810;
+  --bg2:        #080c16;
+  --bg3:        #0b1020;
+  --surface:    #0d1425;
+  --surface2:   #111a2e;
+  --border:     #182238;
+  --border2:    #1e2d45;
+  --accent:     #00e5ff;
+  --accent2:    #0050ff;
+  --accent3:    #00ff9d;
+  --red:        #ff3d5a;
+  --text:       #e8f0ff;
+  --text2:      #8baabb;
+  --text3:      #3a5575;
+  --glow:       rgba(0,229,255,.15);
+  --glow2:      rgba(0,80,255,.12);
+  --shadow:     0 8px 40px rgba(0,0,0,.6);
+}
+[data-theme="light"] {
+  --bg:         #f0f4ff;
+  --bg2:        #e8eeff;
+  --bg3:        #dde5ff;
+  --surface:    #ffffff;
+  --surface2:   #f5f7ff;
+  --border:     #d0daf0;
+  --border2:    #c0cce8;
+  --accent:     #0050ff;
+  --accent2:    #0030cc;
+  --accent3:    #00b87a;
+  --red:        #e0002a;
+  --text:       #0a1628;
+  --text2:      #3a5575;
+  --text3:      #8baabb;
+  --glow:       rgba(0,80,255,.1);
+  --glow2:      rgba(0,48,204,.08);
+  --shadow:     0 8px 40px rgba(0,40,120,.1);
 }
 
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{
+  font-family:'Cabinet Grotesk',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+  transition:background .4s,color .4s;
+  cursor:none;
+}
+::selection{background:var(--accent);color:#000;}
 
-  h1 {
-    font-family: 'Major Mono Display', monospace;
-    color: var(--main-color);
-    font-size: 42px;
-    margin-bottom: 10px;
-    text-align: center;
-  }
-  
-  .subtitle {
-    text-align: center;
-    font-size: 20px;
-    color: #555;
-    margin-bottom: 30px;
-    font-weight: 500;
-  }
+/* ============================================================
+   CUSTOM CURSOR
+   ============================================================ */
+#cursor{
+  position:fixed;width:12px;height:12px;
+  border:2px solid var(--accent);
+  border-radius:50%;
+  pointer-events:none;z-index:9999;
+  transform:translate(-50%,-50%);
+  transition:width .2s,height .2s,border-color .2s,background .2s;
+  mix-blend-mode:normal;
+}
+#cursor-ring{
+  position:fixed;width:36px;height:36px;
+  border:1px solid rgba(0,229,255,.4);
+  border-radius:50%;
+  pointer-events:none;z-index:9998;
+  transform:translate(-50%,-50%);
+  transition:transform .12s ease,width .3s,height .3s,opacity .3s;
+}
+body.clicking #cursor{width:8px;height:8px;background:var(--accent);}
+body.hovering #cursor{width:6px;height:6px;background:var(--accent);border-color:transparent;}
+body.hovering #cursor-ring{width:50px;height:50px;border-color:rgba(0,229,255,.25);}
 
-  h2.section-title {
-    border-bottom: 2px solid var(--main-color);
-    padding-bottom: 5px;
-    color: var(--main-color);
-    margin-top: 30px;
-    font-size: 22px;
-  }
+/* crosshair lines */
+#cursor::before,#cursor::after{
+  content:'';position:absolute;background:var(--accent);opacity:.5;
+}
+#cursor::before{width:1px;height:18px;left:50%;top:50%;transform:translate(-50%,-50%);}
+#cursor::after{width:18px;height:1px;left:50%;top:50%;transform:translate(-50%,-50%);}
 
-  p, li {
-    line-height: 1.7;
-    font-size: 16px;
-  }
-    
-    li:hover {
-      transform: scale(1.01);
-      color: var(--hover-color);
-      transition: all 0.2s ease;
-    }
+/* ============================================================
+   CANVAS PARTICLES
+   ============================================================ */
+#particles-canvas{
+  position:fixed;inset:0;
+  pointer-events:none;z-index:0;
+  opacity:.55;
+  transition:opacity .4s;
+}
+[data-theme="light"] #particles-canvas{opacity:.25;}
 
-  ul {
-    list-style: none;
-    padding-left: 0;
-  }
+/* ============================================================
+   GRID BG
+   ============================================================ */
+.grid-bg{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    linear-gradient(var(--border) 1px,transparent 1px),
+    linear-gradient(90deg,var(--border) 1px,transparent 1px);
+  background-size:55px 55px;
+  opacity:.4;
+  transition:opacity .4s;
+}
+[data-theme="light"] .grid-bg{opacity:.18;}
 
-  li {
-    margin-bottom: 12px;
-    color: inherit;
-  }
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px;}
 
-  .date {
-    float: right;
-    color: #888;
-    font-size: 14px;
-    font-weight: 500;
-  }
+/* ============================================================
+   PROGRESS BAR (top)
+   ============================================================ */
+#progress-bar{
+  position:fixed;top:0;left:0;height:2px;
+  background:linear-gradient(90deg,var(--accent2),var(--accent),var(--accent3));
+  z-index:200;width:0%;transition:width .1s;
+}
 
-  a {
-    color: var(--main-color);
-    text-decoration: none;
-    font-weight: 500;
-  }
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+nav{
+  position:fixed;top:2px;left:0;right:0;
+  z-index:150;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 5%;height:62px;
+  background:rgba(5,8,16,.85);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  transition:background .4s,border-color .4s;
+}
+[data-theme="light"] nav{background:rgba(240,244,255,.88);}
+.nav-logo{
+  font-family:'JetBrains Mono',monospace;
+  font-size:15px;font-weight:700;letter-spacing:3px;
+  color:var(--accent);text-decoration:none;
+  display:flex;align-items:center;gap:8px;
+}
+.nav-logo-bracket{color:var(--text3);}
+.nav-links{display:flex;gap:28px;list-style:none;}
+.nav-links a{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--text2);text-decoration:none;
+  transition:color .2s;position:relative;
+}
+.nav-links a::after{
+  content:'';position:absolute;left:0;bottom:-3px;
+  width:0;height:1px;background:var(--accent);
+  transition:width .3s;
+}
+.nav-links a:hover{color:var(--accent);}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%;}
+.nav-links a.active{color:var(--accent);}
+.nav-controls{display:flex;align-items:center;gap:10px;}
 
-  a:hover {
-    color: var(--hover-color);
-  }
+/* lang toggle */
+.lang-toggle{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:2px;
+  border:1px solid var(--border2);
+  border-radius:5px;overflow:hidden;
+  display:flex;
+}
+.lang-btn{
+  padding:6px 10px;background:transparent;
+  border:none;cursor:none;
+  color:var(--text3);font-family:inherit;font-size:10px;
+  letter-spacing:2px;text-transform:uppercase;
+  transition:var(--tr);
+}
+.lang-btn.active{background:var(--accent);color:#000;font-weight:700;}
 
-  .badge {
-    display: inline-block;
-    background-color: var(--main-color);
-    color: #fff;
-    border-radius: 5px;
-    padding: 2px 8px;
-    font-size: 12px;
-    margin-left: 8px;
-  }
+/* theme toggle */
+.theme-toggle{
+  width:38px;height:38px;
+  border:1px solid var(--border2);border-radius:8px;
+  background:transparent;cursor:none;
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;transition:var(--tr);color:var(--text2);
+}
+.theme-toggle:hover{border-color:var(--accent);color:var(--accent);}
 
-  .contact-info {
-    margin-bottom: 20px;
-    text-align: center;
-    font-size: 15px;
-  }
+/* CV btn */
+.nav-cv{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  color:#000;background:var(--accent);
+  padding:8px 16px;border-radius:5px;text-decoration:none;
+  transition:opacity .2s,transform .2s;
+  font-weight:700;
+}
+.nav-cv:hover{opacity:.85;transform:translateY(-1px);}
 
-  /* --- AJOUT CSS POUR LE BADGE --- */
-  .thm-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 30px;
-  }
+/* hamburger */
+.hamburger{
+  display:none;flex-direction:column;gap:5px;
+  cursor:none;background:none;border:none;
+}
+.hamburger span{width:22px;height:2px;background:var(--accent);display:block;transition:all .3s;}
 
-  .btn {
-    display: inline-block;
-    background-color: var(--main-color);
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 16px;
-    transition: background-color 0.3s;
-    margin-top: 20px;
-  }
+/* ============================================================
+   SECTION COMMON
+   ============================================================ */
+section{
+  position:relative;z-index:1;
+  padding:100px 5%;
+}
+.max-w{max-width:1140px;margin:0 auto;}
+.s-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:4px;text-transform:uppercase;
+  color:var(--accent);margin-bottom:10px;
+  display:flex;align-items:center;gap:12px;
+}
+.s-label::before{content:'';width:30px;height:1px;background:var(--accent);}
+.s-label::after{content:'';flex:1;max-width:60px;height:1px;background:linear-gradient(90deg,var(--accent),transparent);}
+.s-title{
+  font-family:'Clash Display',sans-serif;
+  font-size:clamp(34px,5vw,58px);
+  font-weight:700;letter-spacing:-1px;
+  color:var(--text);margin-bottom:56px;line-height:1.05;
+}
+.s-title .hl{
+  color:transparent;
+  -webkit-text-stroke:1.5px var(--accent);
+}
+[data-theme="light"] .s-title .hl{-webkit-text-stroke:2px var(--accent);}
 
-  .btn:hover {
-    background-color: var(--hover-color);
-  }
-  
-  strong {
-      font-weight: 500;
-  }
+/* bg-alt sections */
+.bg-alt{
+  background:var(--bg2);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
 
-  html {
-    scroll-behavior: smooth;
-  }
+/* ============================================================
+   REVEAL ANIMATIONS
+   ============================================================ */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.in{opacity:1;transform:none;}
+.reveal-left{opacity:0;transform:translateX(-32px);transition:opacity .7s ease,transform .7s ease;}
+.reveal-left.in{opacity:1;transform:none;}
+.reveal-right{opacity:0;transform:translateX(32px);transition:opacity .7s ease,transform .7s ease;}
+.reveal-right.in{opacity:1;transform:none;}
+.reveal-scale{opacity:0;transform:scale(.92);transition:opacity .6s ease,transform .6s ease;}
+.reveal-scale.in{opacity:1;transform:scale(1);}
+.stagger>*{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease;}
+.stagger.in>*{opacity:1;transform:none;}
+.stagger.in>*:nth-child(1){transition-delay:.05s;}
+.stagger.in>*:nth-child(2){transition-delay:.12s;}
+.stagger.in>*:nth-child(3){transition-delay:.19s;}
+.stagger.in>*:nth-child(4){transition-delay:.26s;}
+.stagger.in>*:nth-child(5){transition-delay:.33s;}
+.stagger.in>*:nth-child(6){transition-delay:.40s;}
 
-  @media screen and (max-width: 768px) {
-    .container {
-      padding: 20px;
-    }
+/* ============================================================
+   HERO
+   ============================================================ */
+#home{
+  min-height:100vh;
+  display:flex;align-items:center;
+  padding-top:110px;padding-bottom:60px;
+  overflow:hidden;
+}
+.hero-inner{
+  display:grid;
+  grid-template-columns:1.1fr 1fr;
+  gap:60px;align-items:center;
+}
+.hero-left{}
+.hero-tag{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;letter-spacing:4px;text-transform:uppercase;
+  color:var(--accent);margin-bottom:20px;
+  display:flex;align-items:center;gap:10px;
+}
+.hero-tag .htd{width:6px;height:6px;border-radius:50%;background:var(--accent3);box-shadow:0 0 8px var(--accent3);animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.3;}}
+.hero-name{
+  font-family:'Clash Display',sans-serif;
+  font-size:clamp(52px,7vw,88px);
+  font-weight:700;letter-spacing:-2px;
+  line-height:.95;margin-bottom:20px;
+  cursor:pointer;user-select:none;
+}
+.hero-name .n1{display:block;color:var(--text);}
+.hero-name .n2{
+  display:block;
+  color:transparent;
+  -webkit-text-stroke:2px var(--accent);
+  transition:all .4s;
+}
+.hero-name:hover .n2{color:var(--accent);-webkit-text-stroke:0;}
+.hero-typed{
+  font-family:'JetBrains Mono',monospace;
+  font-size:17px;color:var(--text2);
+  margin-bottom:26px;min-height:28px;
+}
+.typed-cursor{
+  display:inline-block;width:2px;height:18px;
+  background:var(--accent);margin-left:2px;
+  animation:cursor-blink .7s infinite;vertical-align:middle;
+}
+@keyframes cursor-blink{0%,100%{opacity:1;}50%{opacity:0;}}
+.hero-desc{
+  font-size:15px;line-height:1.85;
+  color:var(--text2);max-width:520px;margin-bottom:38px;
+}
+.hero-desc strong{color:var(--accent);}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:42px;}
+.btn-p{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;letter-spacing:2px;text-transform:uppercase;
+  color:#000;background:var(--accent);
+  padding:13px 26px;border-radius:6px;text-decoration:none;
+  font-weight:700;transition:var(--tr);
+  box-shadow:0 0 28px rgba(0,229,255,.25);
+}
+.btn-p:hover{transform:translateY(-3px);box-shadow:0 0 45px rgba(0,229,255,.45);}
+.btn-g{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--accent);background:transparent;
+  border:1px solid rgba(0,229,255,.4);
+  padding:13px 26px;border-radius:6px;text-decoration:none;
+  transition:var(--tr);
+}
+.btn-g:hover{background:rgba(0,229,255,.08);transform:translateY(-3px);}
+.hero-langs{
+  display:flex;align-items:center;gap:12px;
+  font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text3);
+}
+.hero-lang-pill{
+  padding:4px 12px;border:1px solid var(--border2);border-radius:20px;
+  color:var(--text2);font-size:10px;letter-spacing:1px;
+}
+.hero-lang-pill.native{border-color:rgba(0,255,157,.3);color:var(--accent3);}
 
-    h1 {
-      font-size: 32px;
-    }
-    
-    .date {
-        float: none;
-        display: block;
-        margin-bottom: 5px;
-    }
+/* hero right */
+.hero-right{
+  display:flex;flex-direction:column;align-items:center;
+  gap:26px;
+}
+.avatar-wrap{position:relative;width:300px;height:300px;}
+.avatar-svg{
+  position:absolute;inset:0;
+  animation:rotate-avatar 20s linear infinite;
+}
+@keyframes rotate-avatar{to{transform:rotate(360deg);}}
+.avatar-svg2{
+  position:absolute;inset:-16px;
+  animation:rotate-avatar 35s linear infinite reverse;
+  opacity:.5;
+}
+.avatar-center{
+  position:absolute;inset:20px;
+  border-radius:50%;
+  background:var(--surface);
+  border:2px solid var(--border2);
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+  font-size:80px;
+}
+.avatar-glow{
+  position:absolute;inset:-30px;
+  border-radius:50%;
+  background:radial-gradient(circle,var(--glow) 0%,transparent 70%);
+  animation:glow-pulse 3s ease-in-out infinite;
+}
+@keyframes glow-pulse{0%,100%{opacity:.6;}50%{opacity:1;}}
+.status-pill{
+  background:var(--surface);border:1px solid var(--border2);
+  border-radius:30px;padding:10px 18px;
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  color:var(--accent3);display:flex;align-items:center;gap:8px;
+}
+.spd{width:8px;height:8px;border-radius:50%;background:var(--accent3);box-shadow:0 0 10px var(--accent3);animation:blink 2s infinite;}
+.hero-stats{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:12px;width:100%;
+}
+.hs-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:10px;padding:14px 10px;text-align:center;
+  transition:var(--tr);
+}
+.hs-card:hover{border-color:rgba(0,229,255,.3);transform:translateY(-2px);}
+.hs-num{
+  font-family:'Clash Display',sans-serif;
+  font-size:26px;font-weight:700;
+  color:var(--accent);line-height:1;margin-bottom:4px;
+}
+.hs-lbl{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:1px;}
 
-    h2.section-title {
-      font-size: 18px;
-    }
-  }
-  </style>
+/* ============================================================
+   ABOUT
+   ============================================================ */
+.about-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:60px;align-items:start;
+}
+.about-text{font-size:15px;line-height:1.9;color:var(--text2);margin-bottom:20px;}
+.about-text strong{color:var(--accent);font-weight:700;}
+.about-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;}
+.atag{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:1px;
+  color:var(--text2);background:var(--surface2);
+  border:1px solid var(--border2);padding:5px 12px;
+  border-radius:4px;transition:var(--tr);
+}
+.atag:hover{color:var(--accent);border-color:rgba(0,229,255,.4);}
+.about-right{}
+.about-stats{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:14px;margin-bottom:26px;
+}
+.asc{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:10px;padding:20px 16px;
+  position:relative;overflow:hidden;transition:var(--tr);
+}
+.asc::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--accent2),var(--accent));
+}
+.asc:hover{border-color:rgba(0,229,255,.3);transform:translateY(-3px);}
+.asc-num{
+  font-family:'Clash Display',sans-serif;font-size:40px;
+  font-weight:700;color:var(--accent);line-height:1;margin-bottom:5px;
+}
+.asc-lbl{font-size:12px;color:var(--text2);text-transform:uppercase;letter-spacing:1px;}
+.thm-block{margin-top:10px;}
+.thm-lbl{
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--text3);margin-bottom:8px;
+}
 
+/* ============================================================
+   SKILLS
+   ============================================================ */
+.skills-wrap{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:56px;
+}
+.skill-col-title{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--text3);margin-bottom:28px;
+}
+.sbar{margin-bottom:22px;}
+.sbar-top{display:flex;justify-content:space-between;margin-bottom:8px;}
+.sbar-name{font-size:13.5px;font-weight:600;color:var(--text);}
+.sbar-pct{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;color:var(--accent);
+}
+.sbar-track{
+  height:4px;background:var(--surface2);
+  border-radius:2px;overflow:hidden;
+}
+.sbar-fill{
+  height:100%;border-radius:2px;width:0;
+  background:linear-gradient(90deg,var(--accent2),var(--accent));
+  transition:width 1.4s cubic-bezier(.4,0,.2,1);
+  position:relative;
+}
+.sbar-fill::after{
+  content:'';position:absolute;right:0;top:50%;
+  transform:translateY(-50%);
+  width:8px;height:8px;border-radius:50%;
+  background:var(--accent);box-shadow:0 0 8px var(--accent);
+}
+.tools-section{margin-top:4px;}
+.tcat{
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--accent);margin-bottom:10px;margin-top:22px;
+}
+.tchips{display:flex;flex-wrap:wrap;gap:7px;}
+.tc{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10.5px;color:var(--text2);
+  background:var(--surface);border:1px solid var(--border);
+  padding:5px 12px;border-radius:4px;transition:var(--tr);cursor:default;
+}
+.tc:hover{color:var(--accent);border-color:rgba(0,229,255,.4);background:rgba(0,229,255,.05);}
+
+/* ============================================================
+   EXPERIENCE
+   ============================================================ */
+.timeline{position:relative;padding-left:26px;}
+.timeline::before{
+  content:'';position:absolute;left:0;top:10px;bottom:0;
+  width:1px;
+  background:linear-gradient(to bottom,var(--accent),var(--accent2) 60%,transparent);
+}
+.tli{position:relative;margin-bottom:48px;padding-left:28px;}
+.tli:last-child{margin-bottom:0;}
+.tli-dot{
+  position:absolute;left:-33px;top:4px;
+  width:14px;height:14px;border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 16px var(--accent),0 0 32px rgba(0,229,255,.3);
+  border:2px solid var(--bg2);
+  transition:var(--tr);
+}
+.tli:hover .tli-dot{transform:scale(1.3);}
+.tli-head{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  gap:12px;flex-wrap:wrap;margin-bottom:5px;
+}
+.tli-role{font-size:16px;font-weight:700;color:var(--text);}
+.tli-date{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  color:var(--accent);background:rgba(0,229,255,.08);
+  border:1px solid rgba(0,229,255,.2);
+  padding:4px 10px;border-radius:4px;white-space:nowrap;flex-shrink:0;
+}
+.tli-co{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;color:var(--text3);margin-bottom:13px;
+}
+.tli-co span{color:var(--accent3);}
+.tli-ul{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.tli-ul li{
+  font-size:13.5px;color:var(--text2);line-height:1.65;
+  padding-left:16px;position:relative;
+}
+.tli-ul li::before{
+  content:'▸';position:absolute;left:0;
+  color:var(--accent);font-size:10px;top:3px;
+}
+
+/* ============================================================
+   PROJECTS
+   ============================================================ */
+.proj-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+.pcard{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:14px;padding:28px 22px;
+  position:relative;overflow:hidden;
+  transition:var(--tr);
+}
+.pcard::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--accent2),var(--accent),transparent);
+}
+.pcard::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 50% 0%,var(--glow),transparent 60%);
+  opacity:0;transition:opacity .4s;
+}
+.pcard:hover{border-color:rgba(0,229,255,.4);transform:translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,.4);}
+.pcard:hover::after{opacity:1;}
+.pcard-icon{
+  width:48px;height:48px;border-radius:12px;
+  background:linear-gradient(135deg,rgba(0,80,255,.2),rgba(0,229,255,.1));
+  border:1px solid rgba(0,229,255,.2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;margin-bottom:18px;position:relative;z-index:1;
+}
+.pcard-name{font-size:15.5px;font-weight:700;color:var(--text);margin-bottom:6px;position:relative;z-index:1;}
+.pcard-stack{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  color:var(--accent2);margin-bottom:12px;letter-spacing:.5px;position:relative;z-index:1;
+}
+.pcard-desc{font-size:13px;color:var(--text2);line-height:1.7;position:relative;z-index:1;}
+.pcard-foot{
+  margin-top:18px;padding-top:16px;
+  border-top:1px solid var(--border);
+  display:flex;gap:8px;position:relative;z-index:1;
+}
+.pcard-tag{
+  font-family:'JetBrains Mono',monospace;font-size:9px;
+  color:var(--text3);background:var(--surface2);
+  border:1px solid var(--border);padding:3px 8px;border-radius:3px;
+}
+
+/* ============================================================
+   TERMINAL
+   ============================================================ */
+#terminal-section{padding:80px 5%;}
+.term-wrap{
+  max-width:1140px;margin:0 auto;
+}
+.term-box{
+  background:var(--bg3);
+  border:1px solid var(--border2);border-radius:14px;
+  overflow:hidden;box-shadow:var(--shadow);
+}
+.term-header{
+  background:var(--surface);padding:14px 20px;
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:8px;
+}
+.tb{width:12px;height:12px;border-radius:50%;}
+.tb-r{background:#ff5f57;}
+.tb-y{background:#febc2e;}
+.tb-g{background:#28c840;}
+.term-title{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;color:var(--text3);margin-left:8px;letter-spacing:2px;
+}
+.term-body{
+  padding:20px;min-height:280px;max-height:380px;
+  overflow-y:auto;font-family:'JetBrains Mono',monospace;font-size:13px;
+}
+.tline{margin-bottom:4px;line-height:1.6;}
+.tline .prompt{color:var(--accent3);}
+.tline .cmd{color:var(--text);}
+.tline .out{color:var(--text2);}
+.tline .acc{color:var(--accent);}
+.tline .err{color:var(--red);}
+.tline .suc{color:var(--accent3);}
+.term-input-row{
+  display:flex;align-items:center;gap:8px;
+  padding:0 20px 16px;
+  font-family:'JetBrains Mono',monospace;font-size:13px;
+}
+.ti-prompt{color:var(--accent3);}
+#term-input{
+  flex:1;background:transparent;border:none;outline:none;
+  color:var(--text);font-family:'JetBrains Mono',monospace;font-size:13px;
+  caret-color:var(--accent);cursor:none;
+}
+
+/* ============================================================
+   SERVICES
+   ============================================================ */
+.svc-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+.svcard{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:12px;padding:28px 22px;
+  transition:var(--tr);position:relative;overflow:hidden;
+}
+.svcard::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;
+  height:0;background:linear-gradient(to top,var(--glow2),transparent);
+  transition:height .4s;
+}
+.svcard:hover{border-color:rgba(0,229,255,.35);transform:translateY(-5px);}
+.svcard:hover::after{height:100%;}
+.svcard-icon{font-size:28px;margin-bottom:14px;display:block;}
+.svcard-name{font-size:15px;font-weight:700;color:var(--text);margin-bottom:10px;position:relative;z-index:1;}
+.svcard-desc{font-size:13px;color:var(--text2);line-height:1.75;position:relative;z-index:1;}
+
+/* ============================================================
+   EDUCATION
+   ============================================================ */
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:28px;}
+.edc{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:12px;padding:28px 24px;transition:var(--tr);
+  position:relative;overflow:hidden;
+}
+.edc::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--accent2),var(--accent),transparent);
+}
+.edc:hover{border-color:rgba(0,229,255,.3);transform:translateY(-3px);}
+.edc-yr{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  color:var(--accent);background:rgba(0,229,255,.08);
+  border:1px solid rgba(0,229,255,.2);
+  padding:3px 9px;border-radius:4px;
+  display:inline-block;margin-bottom:14px;
+}
+.edc-deg{font-size:16px;font-weight:700;color:var(--text);margin-bottom:5px;}
+.edc-field{
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  color:var(--accent);margin-bottom:8px;
+}
+.edc-school{font-size:13px;color:var(--text2);margin-bottom:10px;}
+.edc-courses{font-size:12.5px;color:var(--text3);line-height:1.65;}
+.certs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px;}
+.cert-c{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:8px;padding:14px 16px;
+  display:flex;align-items:center;gap:13px;transition:var(--tr);
+}
+.cert-c:hover{border-color:rgba(0,229,255,.3);transform:translateX(3px);}
+.cert-em{font-size:20px;flex-shrink:0;}
+.cert-t{font-size:13px;font-weight:600;color:var(--text);line-height:1.3;}
+.cert-o{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;color:var(--text3);margin-top:3px;
+}
+
+/* ============================================================
+   CONTACT
+   ============================================================ */
+.contact-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:60px;align-items:start;
+}
+.con-desc{font-size:15px;line-height:1.85;color:var(--text2);margin-bottom:32px;}
+.con-links{display:flex;flex-direction:column;gap:13px;}
+.con-link{
+  display:flex;align-items:center;gap:14px;
+  font-size:13.5px;color:var(--text2);text-decoration:none;transition:var(--tr);
+}
+.con-link:hover{color:var(--accent);}
+.con-link .cic{
+  width:40px;height:40px;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:8px;display:flex;align-items:center;justify-content:center;
+  font-size:16px;flex-shrink:0;transition:var(--tr);
+}
+.con-link:hover .cic{border-color:rgba(0,229,255,.4);}
+.cf{display:flex;flex-direction:column;gap:13px;}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:13px;}
+.cfi{
+  font-family:'Cabinet Grotesk',sans-serif;
+  font-size:13px;color:var(--text);
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:8px;padding:13px 16px;outline:none;
+  transition:border-color .2s;width:100%;
+}
+.cfi:focus{border-color:rgba(0,229,255,.4);}
+.cfi::placeholder{color:var(--text3);}
+textarea.cfi{resize:vertical;min-height:120px;}
+.cf-btn{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;letter-spacing:2px;text-transform:uppercase;
+  color:#000;background:var(--accent);
+  border:none;padding:14px 28px;border-radius:6px;
+  cursor:none;font-weight:700;
+  transition:var(--tr);box-shadow:0 0 25px rgba(0,229,255,.2);
+  align-self:flex-start;
+}
+.cf-btn:hover{transform:translateY(-2px);box-shadow:0 0 40px rgba(0,229,255,.4);}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer{
+  text-align:center;padding:28px 5%;
+  border-top:1px solid var(--border);
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;color:var(--text3);letter-spacing:2px;
+  position:relative;z-index:1;
+}
+footer span{color:var(--accent);}
+
+/* ============================================================
+   MOBILE NAV DRAWER
+   ============================================================ */
+.mobile-nav{
+  position:fixed;top:62px;left:0;right:0;bottom:0;
+  background:rgba(5,8,16,.97);backdrop-filter:blur(20px);
+  z-index:140;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:28px;
+  transform:translateX(100%);transition:transform .4s ease;
+}
+.mobile-nav.open{transform:translateX(0);}
+.mobile-nav a{
+  font-family:'Clash Display',sans-serif;
+  font-size:28px;font-weight:700;letter-spacing:2px;
+  color:var(--text2);text-decoration:none;text-transform:uppercase;
+  transition:color .2s;
+}
+.mobile-nav a:hover{color:var(--accent);}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media(max-width:960px){
+  .hero-inner{grid-template-columns:1fr;text-align:center;}
+  .hero-tag{justify-content:center;}
+  .hero-btns{justify-content:center;}
+  .hero-desc{margin-left:auto;margin-right:auto;}
+  .hero-langs{justify-content:center;}
+  .hero-right{margin:0 auto;}
+  .about-grid,.skills-wrap,.contact-grid{grid-template-columns:1fr;gap:40px;}
+  .proj-grid,.svc-grid{grid-template-columns:1fr 1fr;}
+  .edu-grid{grid-template-columns:1fr;}
+}
+@media(max-width:600px){
+  .proj-grid,.svc-grid{grid-template-columns:1fr;}
+  .certs-grid,.cf-row{grid-template-columns:1fr;}
+  .nav-links,.nav-cv{display:none;}
+  .hamburger{display:flex;}
+  .nav-controls .nav-cv{display:none;}
+  .hero-stats{grid-template-columns:repeat(3,1fr);}
+  .about-stats{grid-template-columns:1fr 1fr;}
+}
+
+/* ============================================================
+   I18N hidden
+   ============================================================ */
+[data-lang]{display:block;}
+.lang-fr [data-lang="en"]{display:none!important;}
+.lang-en [data-lang="fr"]{display:none!important;}
+
+/* ============================================================
+   TOOLTIP
+   ============================================================ */
+.has-tip{position:relative;}
+.has-tip::before{
+  content:attr(data-tip);
+  position:absolute;bottom:calc(100% + 8px);left:50%;
+  transform:translateX(-50%) translateY(4px);
+  background:var(--surface2);border:1px solid var(--border2);
+  color:var(--text);font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:1px;white-space:nowrap;
+  padding:5px 10px;border-radius:5px;
+  opacity:0;pointer-events:none;
+  transition:opacity .2s,transform .2s;z-index:50;
+}
+.has-tip:hover::before{opacity:1;transform:translateX(-50%) translateY(0);}
+</style>
 </head>
-<body>
-  <div class="container">
-    <h1 class="hacker-title">Yasser EL KARCH</h1>
-    <div class="subtitle">Ingénieur Cybersécurité</div>
+<body class="lang-en">
 
-    <div class="contact-info">
-      <p>
-        <strong>Email :</strong> <a href="mailto:yasser.elkarch@gmail.com">yasser.elkarch@gmail.com</a> |
-        <strong>Téléphone :</strong> <a href="tel:+33759275094">+33 7 59 27 50 94</a> |
-        <strong>Lieu :</strong> Paris, France<br>
-        <strong>LinkedIn :</strong> <a href="https://linkedin.com/yasser-el-karch" target="_blank" rel="noopener">linkedin.com/yasser-el-karch</a> |
-        <strong>GitHub :</strong> <a href="https://github.com/YasserElkarch" target="_blank" rel="noopener">github.com/YasserElkarch</a>
-      </p>
+<!-- CURSOR -->
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- PROGRESS BAR -->
+<div id="progress-bar"></div>
+
+<!-- CANVAS PARTICLES -->
+<canvas id="particles-canvas"></canvas>
+<div class="grid-bg"></div>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#home" onclick="closeMob()"><span data-lang="en">Home</span><span data-lang="fr">Accueil</span></a>
+  <a href="#about" onclick="closeMob()"><span data-lang="en">About</span><span data-lang="fr">Profil</span></a>
+  <a href="#skills" onclick="closeMob()"><span data-lang="en">Skills</span><span data-lang="fr">Compétences</span></a>
+  <a href="#experience" onclick="closeMob()"><span data-lang="en">Experience</span><span data-lang="fr">Expériences</span></a>
+  <a href="#projects" onclick="closeMob()"><span data-lang="en">Projects</span><span data-lang="fr">Projets</span></a>
+  <a href="#contact" onclick="closeMob()"><span data-lang="en">Contact</span><span data-lang="fr">Contact</span></a>
+</div>
+
+<!-- ===== NAVBAR ===== -->
+<nav id="navbar">
+  <a class="nav-logo" href="#home">
+    <span class="nav-logo-bracket">[</span>YEK<span class="nav-logo-bracket">]</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#home"><span data-lang="en">Home</span><span data-lang="fr">Accueil</span></a></li>
+    <li><a href="#about"><span data-lang="en">About</span><span data-lang="fr">Profil</span></a></li>
+    <li><a href="#skills"><span data-lang="en">Skills</span><span data-lang="fr">Compétences</span></a></li>
+    <li><a href="#experience"><span data-lang="en">Experience</span><span data-lang="fr">Expériences</span></a></li>
+    <li><a href="#projects"><span data-lang="en">Projects</span><span data-lang="fr">Projets</span></a></li>
+    <li><a href="#terminal-section">Terminal</a></li>
+    <li><a href="#education"><span data-lang="en">Education</span><span data-lang="fr">Formation</span></a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-controls">
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" id="btn-fr" onclick="setLang('fr')">FR</button>
     </div>
-
-    <div class="thm-container">
-      <iframe src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=1976821" style="border:none; width: 330px; height: 120px;"></iframe>
-    </div>
-
-    <h2 class="section-title">À Propos</h2>
-    <p>
-      Ingénieur en Réseaux et Télécommunications, étudiant en Master 2, avec une spécialisation affirmée en sécurité offensive. 
-      Certifié eJPTv2, PEH et EHE, doté d'une expérience en tests d'intrusion, audits de sécurité et protection des systèmes d'information. 
-      Actuellement à la recherche d'un stage de fin d'études de 6 mois à partir de Mars afin de mettre à profit mon expertise pour la détection, l'analyse et la prévention des vulnérabilités.
-    </p>
-
-    <h2 class="section-title">Compétences Techniques</h2>
-    <ul>
-      <li><strong>Sécurité Offensive (Pentest) :</strong> Pentest Réseau & Système (Linux/Windows), Pentest Active Directory, Web Application Pentesting (OWASP Top 10), Enumeration, Exploitation, Privilege Escalation, Lateral Movement, Post-Exploitation, Reporting. Outils: Metasploit, Burp Suite, Nmap, Gobuster, SQLmap, BloodHound, Impacket, CrackMapExec, ZAP Proxy, OpenVAS.</li>
-      <li><strong>Sécurité Défensive & Gouvernance :</strong> Nessus, Tenable Identity Exposure, IBM QRadar (SIEM), Active Directory Security, Détection d'attaques, Analyse de logs, ISO 27001, COBIT 5, IAM, eFront ERM, Wireshark.</li>
-      <li><strong>Programmation & Scripting :</strong> Python (outils d'automatisation sécurité), Bash, PowerShell (bases), Java, SQL (MySQL), C.</li>
-      <li><strong>Systèmes & Réseaux :</strong> Linux, Windows, TCP/IP, VPN (IPSec, Site-to-Site), Routage, Firewalling, WLAN Security (WPA/WPA3), Analyse réseau, Protocoles réseau.</li>
-      <li><strong>Virtualisation & Environnements de test :</strong> VMware, VirtualBox, Labs Pentest (Hack The Box, TryHackMe, Root-Me, VulnHub).</li>
-    </ul>
-
-    <h2 class="section-title">Expériences Professionnelles</h2>
-    <ul>
-      <li>
-        <strong>La Banque Populaire – Auditeur sécurité SI</strong>
-        <span class="date">Déc 2024 - Août 2025</span><br>
-        <em>Casablanca, Maroc</em>
-        <ul>
-            <li>Réalisation de +10 audits techniques sur Active Directory et Microsoft Exchange, incluant revue de configuration, détection de mauvaises pratiques et tests d'intrusion internes.</li>
-            <li>Conduite de tests d'intrusion applicatifs (OWASP Top 10) sur plusieurs applications critiques, menant à l'identification de vulnérabilités à impact élevé (XSS, RFI, auth bypass).</li>
-            <li>Exploitation contrôlée des failles via Burp Suite, Nessus, SQLmap, suivie de la rédaction de rapports exécutifs et techniques avec priorisation des risques.</li>
-            <li>Évaluation de la posture de sécurité selon ISO 27001 et COBIT 5, contribuant à une réduction mesurable du risque cyber.</li>
-            <li>Suivi de 70% des plans de remédiation via eFront ERM jusqu'à validation des correctifs.</li>
-        </ul>
-      </li>
-      <li>
-        <strong>La Banque Populaire – Pentester & Sécurité Active Directory (Stage)</strong>
-        <span class="date">Fév 2024 - Juin 2024</span><br>
-        <em>Casablanca, Maroc</em>
-        <ul>
-            <li>Conception et déploiement d'un lab Active Directory, simulant un environnement d'entreprise réel pour tests d'intrusion internes.</li>
-            <li>Réalisation de campagnes complètes de pentest AD: énumération, exploitation d'abus de privilèges, élévation locale et compromission de domaine.</li>
-            <li>Identification et validation de chemins d'attaque critiques (Kerberoasting, ACL abuse, lateral movement).</li>
-            <li>Rédaction de rapports techniques détaillés incluant preuves d'exploitation (PoC) et recommandations de durcissement AD.</li>
-            <li>Initiative personnelle : déploiement autonome de Tenable Identity Exposure pour l'identification automatisée de vecteurs d'attaque internes, et intégration d'IBM QRadar SIEM pour la corrélation des événements.</li>
-        </ul>
-      </li>
-      <li>
-        <strong>INWI (Opérateur Télécom) – Ingénieur Sécurité SI</strong>
-        <span class="date">Juil 2023 - Août 2023</span><br>
-        <em>Casablanca, Maroc</em>
-        <ul>
-            <li>Déploiement d'une architecture VPN site-à-site haute disponibilité.</li>
-            <li>Configuration sécurisée des routeurs, pare-feu et équipements réseau gérant IPSec.</li>
-            <li>Gestion des clés de chiffrement et des mécanismes d'authentification.</li>
-            <li>Analyse des risques et renforcement de la sécurité des communications inter-sites.</li>
-        </ul>
-      </li>
-    </ul>
-
-    <h2 class="section-title">Projets</h2>
-    <ul>
-       <li>
-           <strong>Pentest d'Active Directory</strong> (BloodHound, Impacket, Kerberoasting, PowerShell)<br>
-           - Réalisé l'énumération complète de l'AD et la cartographie des chemins d'attaque avec BloodHound.<br>
-           - Exploité des vulnérabilités Kerberos (Kerberoasting, AS-REP Roasting) et effectué du lateral movement.<br>
-           - Proposé des mesures de durcissement AD suite aux findings (GPO, ACL, politiques Kerberos).
-       </li>
-       <li>
-           <strong>Audit & Exploitation Wi-Fi (WiCrack.py)</strong> (Python, Aircrack-ng, Scapy)<br>
-           - Développement d'un outil Python automatisant le scan des réseaux Wi-Fi et la détection des clients connectés.<br>
-           - Intégration d'un menu interactif permettant de lancer des attaques DoS ou de capturer un 4-Way Handshake.<br>
-           - Implémentation d'attaques automatisées (deauth, MDK4) et génération de fichiers de capture pour analyse de sécurité.
-       </li>
-       <li>
-           <strong>Pentest Machines Vulnérables</strong> (TryHackMe, VulnLab, Metasploitable)<br>
-           - Réalisé l'énumération et l'analyse des services exposés (SMB, FTP, SSH, Web).<br>
-           - Exploité des vulnérabilités réseau et applicatives, puis effectué l'escalade de privilèges Linux/Windows.<br>
-           - Produit des preuves d'exploitation et rapporté les failles avec leurs mesures correctives.
-       </li>
-    </ul>
-    
-    <h2 class="section-title">Études et Formations</h2>
-    <ul>
-      <li>
-        <strong>Université Paris Saclay</strong> - Master 2 Professionnel en Réseaux et Télécoms
-        <span class="date">2025 - Présent</span><br>
-        <em>Orsay, France</em><br>
-        Cours pertinents: Sécurité réseaux et systèmes, Virtualisation Réseau (SDN, NFV), Python pour les réseaux, IoT, Cœur du réseaux.
-      </li>
-      
-      <li>
-        <strong>École Nationale des Sciences Appliquées (ENSA)</strong> - Diplôme d'Ingénieur en Génie des systèmes de Télécommunications et Réseaux
-        <span class="date">2018 - 2024</span><br>
-        <em>Tanger, Maroc</em>
-      </li>
-    </ul>
-
-    <h2 class="section-title">Certifications</h2>
-    <ul>
-      <li>Junior Penetration Tester (eJPTv2) - INE Security</li>
-      <li>Practical Ethical Hacking (PEH) - TCM Security</li>
-      <li>Ethical Hacking Essentials (EHE) - EC-Council</li>
-      <li>Junior Penetration Tester Path - TryHackMe</li>
-    </ul>
-
-    <h2 class="section-title">Langues & Soft Skills</h2>
-    <ul>
-      <li><strong>Langues :</strong> Anglais (Bilingue), Français (Courant), Arabe (Langue maternelle)</li>
-      <li><strong>Soft Skills :</strong> Pensée offensive, Analyse et résolution de problèmes, Autonomie, Rigueur, Rédaction de rapports, Communication, Travail en équipe, Apprentissage continu.</li>
-    </ul>
-
-    <a href="Yasser_El_Karch_CV.pdf" class="btn" download>Télécharger le CV (PDF)</a>
+    <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()" title="Toggle theme">🌙</button>
+    <a class="nav-cv" href="Yasser_El_Karch_CV.pdf" download>CV ↓</a>
+    <button class="hamburger" id="ham" onclick="toggleMob()">
+      <span></span><span></span><span></span>
+    </button>
   </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section id="home">
+  <div class="max-w">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-tag">
+          <span class="htd"></span>
+          <span data-lang="en">Cybersecurity Engineer · Offensive Security</span>
+          <span data-lang="fr">Ingénieur Cybersécurité · Sécurité Offensive</span>
+        </div>
+        <h1 class="hero-name" id="heroName">
+          <span class="n1">YASSER</span>
+          <span class="n2">EL KARCH</span>
+        </h1>
+        <div class="hero-typed">
+          <span id="typed-text"></span><span class="typed-cursor"></span>
+        </div>
+        <p class="hero-desc">
+          <span data-lang="en">
+            Network &amp; Telecom Engineer, <strong>Master 2 at Paris Saclay</strong>. Certified <strong>eJPTv2, PEH &amp; EHE</strong>. Specialized in penetration testing, Active Directory security and information systems auditing.
+          </span>
+          <span data-lang="fr">
+            Ingénieur en Réseaux &amp; Télécommunications, <strong>Master 2 à Paris Saclay</strong>. Certifié <strong>eJPTv2, PEH &amp; EHE</strong>. Spécialisé en tests d'intrusion, sécurité Active Directory et audit des systèmes d'information.
+          </span>
+        </p>
+        <div class="hero-btns">
+          <a class="btn-p" href="#contact">
+            <span data-lang="en">Contact Me</span>
+            <span data-lang="fr">Me contacter</span>
+          </a>
+          <a class="btn-g" href="#projects">
+            <span data-lang="en">View Projects</span>
+            <span data-lang="fr">Voir les projets</span>
+          </a>
+          <a class="btn-g" href="Yasser_El_Karch_CV.pdf" download>
+            <span data-lang="en">Download CV</span>
+            <span data-lang="fr">Télécharger CV</span>
+          </a>
+        </div>
+        <div class="hero-langs">
+          <span data-lang="en">Languages:</span>
+          <span data-lang="fr">Langues :</span>
+          <span class="hero-lang-pill native">Arabic — Native</span>
+          <span class="hero-lang-pill">French — Fluent</span>
+          <span class="hero-lang-pill">English — Bilingual</span>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="avatar-wrap">
+          <div class="avatar-glow"></div>
+          <svg class="avatar-svg" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="150" cy="150" r="140" stroke="url(#ag1)" stroke-width="1.5" stroke-dasharray="8 5"/>
+            <defs>
+              <linearGradient id="ag1" x1="0" y1="0" x2="300" y2="300" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#00e5ff"/>
+                <stop offset="100%" stop-color="#0050ff"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <svg class="avatar-svg2" viewBox="0 0 332 332" fill="none">
+            <circle cx="166" cy="166" r="155" stroke="rgba(0,229,255,0.25)" stroke-width="1" stroke-dasharray="3 8"/>
+          </svg>
+          <div class="avatar-center">🔐</div>
+        </div>
+        <div class="status-pill">
+          <span class="spd"></span>
+          <span data-lang="en">Available — 6-month internship from March</span>
+          <span data-lang="fr">Disponible — Stage 6 mois dès Mars</span>
+        </div>
+        <div class="hero-stats stagger">
+          <div class="hs-card has-tip" data-tip="Active Directory audits"><div class="hs-num">10+</div><div class="hs-lbl">Audits</div></div>
+          <div class="hs-card has-tip" data-tip="Security certifications"><div class="hs-num">3</div><div class="hs-lbl">Certs</div></div>
+          <div class="hs-card has-tip" data-tip="Years of engineering studies"><div class="hs-num">6</div><div class="hs-lbl"><span data-lang="en">Yrs Study</span><span data-lang="fr">Ans études</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about" class="bg-alt">
+  <div class="max-w">
+    <div class="s-label"><span data-lang="en">About Me</span><span data-lang="fr">À propos</span></div>
+    <h2 class="s-title"><span data-lang="en">WHO AM <span class="hl">I ?</span></span><span data-lang="fr">QUI SUIS-<span class="hl">JE ?</span></span></h2>
+    <div class="about-grid">
+      <div class="reveal-left">
+        <p class="about-text">
+          <span data-lang="en">Network and Telecom Engineer, currently completing my <strong>Master 2 at Université Paris Saclay</strong>, with a strong specialization in <strong>offensive security</strong>. Certified <strong>eJPTv2, PEH and EHE</strong>, I have hands-on experience in penetration testing, security audits and information systems protection gained in real banking environments.</span>
+          <span data-lang="fr">Ingénieur en Réseaux et Télécommunications, actuellement en <strong>Master 2 à l'Université Paris Saclay</strong>, avec une spécialisation affirmée en <strong>sécurité offensive</strong>. Certifié <strong>eJPTv2, PEH et EHE</strong>, j'ai acquis une solide expérience en tests d'intrusion, audits de sécurité et protection des SI en environnements bancaires réels.</span>
+        </p>
+        <p class="about-text">
+          <span data-lang="en">I am currently seeking a <strong>6-month end-of-study internship starting March</strong> to leverage my expertise in vulnerability detection, analysis and prevention.</span>
+          <span data-lang="fr">Je cherche actuellement un <strong>stage de fin d'études de 6 mois à partir de Mars</strong> afin de mettre à profit mon expertise en détection, analyse et prévention des vulnérabilités.</span>
+        </p>
+        <div class="about-tags">
+          <span class="atag">Pentest</span><span class="atag">Active Directory</span><span class="atag">OWASP Top 10</span>
+          <span class="atag">Kerberoasting</span><span class="atag">Lateral Movement</span><span class="atag">ISO 27001</span>
+          <span class="atag">SIEM / QRadar</span><span class="atag">Python</span><span class="atag">Bash</span>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="about-stats">
+          <div class="asc"><div class="asc-num">10+</div><div class="asc-lbl"><span data-lang="en">AD Audits</span><span data-lang="fr">Audits AD</span></div></div>
+          <div class="asc"><div class="asc-num">3</div><div class="asc-lbl"><span data-lang="en">Certifications</span><span data-lang="fr">Certifications</span></div></div>
+          <div class="asc"><div class="asc-num">3</div><div class="asc-lbl"><span data-lang="en">Companies</span><span data-lang="fr">Entreprises</span></div></div>
+          <div class="asc"><div class="asc-num">70%</div><div class="asc-lbl"><span data-lang="en">Remediation Rate</span><span data-lang="fr">Taux remédiation</span></div></div>
+        </div>
+        <div class="thm-block">
+          <div class="thm-lbl">TryHackMe Profile</div>
+          <iframe src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=1976821" style="border:none;width:310px;height:110px;border-radius:8px;"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SKILLS ===== -->
+<section id="skills">
+  <div class="max-w">
+    <div class="s-label"><span data-lang="en">Expertise</span><span data-lang="fr">Expertise</span></div>
+    <h2 class="s-title"><span data-lang="en">MY <span class="hl">SKILLS</span></span><span data-lang="fr">MES <span class="hl">COMPÉTENCES</span></span></h2>
+    <div class="skills-wrap">
+      <div class="reveal-left">
+        <div class="skill-col-title"><span data-lang="en">Proficiency Level</span><span data-lang="fr">Niveau de maîtrise</span></div>
+        <div class="sbar"><div class="sbar-top"><span class="sbar-name">Penetration Testing</span><span class="sbar-pct">90%</span></div><div class="sbar-track"><div class="sbar-fill" data-w="90"></div></div></div>
+        <div class="sbar"><div class="sbar-top"><span class="sbar-name">Active Directory Security</span><span class="sbar-pct">88%</span></div><div class="sbar-track"><div class="sbar-fill" data-w="88"></div></div></div>
+        <div class="sbar"><div class="sbar-top"><span class="sbar-name">Web Application Pentest</span><span class="sbar-pct">85%</span></div><div class="sbar-track"><div class="sbar-fill" data-w="85"></div></div></div>
+        <div class="sbar"><div class="sbar-top"><span class="sbar-name">Network Security</span><span class="sbar-pct">82%</span></div><div class="sbar-track"><div class="sbar-fill" data-w="82"></div></div></div>
+        <div class="sbar"><div class="sbar-top"><span class="sbar-name">Python / Scripting</span><span class="sbar-pct">78%</span></div><div class="sbar-track"><div class="sbar-fill" data-w="78"></div></div></div>
+        <div class="sbar"><div class="sbar-top"><span class="sbar-name">SIEM / Log Analysis</span><span class="sbar-pct">75%</span></div><div class="sbar-track"><div class="sbar-fill" data-w="75"></div></div></div>
+        <div class="sbar"><div class="sbar-top"><span class="sbar-name">Audit ISO 27001 / COBIT 5</span><span class="sbar-pct">72%</span></div><div class="sbar-track"><div class="sbar-fill" data-w="72"></div></div></div>
+      </div>
+      <div class="reveal-right">
+        <div class="skill-col-title"><span data-lang="en">Tools & Arsenal</span><span data-lang="fr">Outils & Arsenal</span></div>
+        <div class="tools-section">
+          <div class="tcat"><span data-lang="en">Offensive</span><span data-lang="fr">Offensif</span></div>
+          <div class="tchips">
+            <span class="tc">Metasploit</span><span class="tc">Burp Suite</span><span class="tc">Nmap</span>
+            <span class="tc">BloodHound</span><span class="tc">Impacket</span><span class="tc">SQLmap</span>
+            <span class="tc">Gobuster</span><span class="tc">CrackMapExec</span><span class="tc">ZAP Proxy</span>
+          </div>
+          <div class="tcat"><span data-lang="en">Defensive</span><span data-lang="fr">Défensif</span></div>
+          <div class="tchips">
+            <span class="tc">Nessus</span><span class="tc">IBM QRadar</span><span class="tc">Tenable IE</span>
+            <span class="tc">Wireshark</span><span class="tc">OpenVAS</span><span class="tc">eFront ERM</span>
+          </div>
+          <div class="tcat"><span data-lang="en">Scripting & Systems</span><span data-lang="fr">Scripting & Systèmes</span></div>
+          <div class="tchips">
+            <span class="tc">Python</span><span class="tc">Bash</span><span class="tc">PowerShell</span>
+            <span class="tc">Linux</span><span class="tc">Windows AD</span><span class="tc">VPN IPSec</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EXPERIENCE ===== -->
+<section id="experience" class="bg-alt">
+  <div class="max-w">
+    <div class="s-label"><span data-lang="en">Career</span><span data-lang="fr">Parcours</span></div>
+    <h2 class="s-title"><span data-lang="en">PROFESSIONAL <span class="hl">EXPERIENCE</span></span><span data-lang="fr">EXPÉRIENCES <span class="hl">PROFESSIONNELLES</span></span></h2>
+    <div class="timeline reveal">
+      <div class="tli">
+        <span class="tli-dot"></span>
+        <div class="tli-head">
+          <div class="tli-role"><span data-lang="en">IS Security Auditor</span><span data-lang="fr">Auditeur Sécurité SI</span></div>
+          <div class="tli-date">Déc 2024 – Août 2025</div>
+        </div>
+        <div class="tli-co">La Banque Populaire · <span>Casablanca, Maroc</span> · <span data-lang="en">Full-time</span><span data-lang="fr">CDI</span></div>
+        <ul class="tli-ul">
+          <li><span data-lang="en">Conducted 10+ technical audits on Active Directory and Microsoft Exchange, including configuration review and internal penetration tests.</span><span data-lang="fr">Réalisation de +10 audits techniques sur Active Directory et Microsoft Exchange, incluant revue de configuration et tests d'intrusion internes.</span></li>
+          <li><span data-lang="en">Web application pentests (OWASP Top 10) — high-impact vulnerabilities identified: XSS, RFI, authentication bypass.</span><span data-lang="fr">Tests d'intrusion applicatifs (OWASP Top 10) — vulnérabilités critiques : XSS, RFI, auth bypass.</span></li>
+          <li><span data-lang="en">Exploitation via Burp Suite, Nessus, SQLmap + executive reports with prioritized risk remediation plans.</span><span data-lang="fr">Exploitation via Burp Suite, Nessus, SQLmap + rapports exécutifs avec priorisation des risques.</span></li>
+          <li><span data-lang="en">Security posture assessment per ISO 27001 and COBIT 5, contributing to measurable cyber risk reduction.</span><span data-lang="fr">Évaluation de la posture de sécurité selon ISO 27001 et COBIT 5 — réduction mesurable du risque cyber.</span></li>
+          <li><span data-lang="en">Tracked 70% of remediation plans via eFront ERM through to fix validation.</span><span data-lang="fr">Suivi de 70% des plans de remédiation via eFront ERM jusqu'à validation des correctifs.</span></li>
+        </ul>
+      </div>
+      <div class="tli">
+        <span class="tli-dot"></span>
+        <div class="tli-head">
+          <div class="tli-role"><span data-lang="en">Pentester & Active Directory Security</span><span data-lang="fr">Pentester & Sécurité Active Directory</span></div>
+          <div class="tli-date">Fév – Juin 2024</div>
+        </div>
+        <div class="tli-co">La Banque Populaire · <span>Casablanca, Maroc</span> · <span data-lang="en">Internship</span><span data-lang="fr">Stage</span></div>
+        <ul class="tli-ul">
+          <li><span data-lang="en">Designed and deployed an Active Directory lab simulating a real enterprise environment for internal pentest campaigns.</span><span data-lang="fr">Conception et déploiement d'un lab Active Directory simulant un environnement d'entreprise réel.</span></li>
+          <li><span data-lang="en">Full AD pentest campaigns: enumeration, privilege exploitation, local escalation, domain compromise.</span><span data-lang="fr">Campagnes complètes de pentest AD : énumération, exploitation, élévation locale, compromission de domaine.</span></li>
+          <li><span data-lang="en">Critical attack path validation: Kerberoasting, ACL abuse, lateral movement.</span><span data-lang="fr">Validation de chemins d'attaque critiques : Kerberoasting, ACL abuse, lateral movement.</span></li>
+          <li><span data-lang="en">Self-initiated deployment of Tenable Identity Exposure + IBM QRadar SIEM integration.</span><span data-lang="fr">Déploiement autonome de Tenable Identity Exposure + intégration IBM QRadar SIEM.</span></li>
+        </ul>
+      </div>
+      <div class="tli">
+        <span class="tli-dot"></span>
+        <div class="tli-head">
+          <div class="tli-role"><span data-lang="en">IS Security Engineer</span><span data-lang="fr">Ingénieur Sécurité SI</span></div>
+          <div class="tli-date">Juil – Août 2023</div>
+        </div>
+        <div class="tli-co">INWI — <span data-lang="en">Telecom Operator</span><span data-lang="fr">Opérateur Télécom</span> · <span>Casablanca, Maroc</span></div>
+        <ul class="tli-ul">
+          <li><span data-lang="en">Deployed a high-availability site-to-site VPN architecture (IPSec).</span><span data-lang="fr">Déploiement d'une architecture VPN site-à-site haute disponibilité (IPSec).</span></li>
+          <li><span data-lang="en">Secure configuration of routers, firewalls and encryption key management.</span><span data-lang="fr">Configuration sécurisée des routeurs, pare-feu et gestion des clés de chiffrement.</span></li>
+          <li><span data-lang="en">Risk analysis and hardening of inter-site communications.</span><span data-lang="fr">Analyse des risques et renforcement des communications inter-sites.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROJECTS ===== -->
+<section id="projects">
+  <div class="max-w">
+    <div class="s-label">Portfolio</div>
+    <h2 class="s-title"><span data-lang="en">MY <span class="hl">PROJECTS</span></span><span data-lang="fr">MES <span class="hl">PROJETS</span></span></h2>
+    <div class="proj-grid stagger">
+      <div class="pcard">
+        <div class="pcard-icon">🩸</div>
+        <div class="pcard-name"><span data-lang="en">Active Directory Pentest</span><span data-lang="fr">Pentest Active Directory</span></div>
+        <div class="pcard-stack">BloodHound · Impacket · Kerberoasting · PowerShell</div>
+        <p class="pcard-desc"><span data-lang="en">Full AD enumeration and attack path mapping with BloodHound. Exploited Kerberoasting, AS-REP Roasting, lateral movement. Delivered hardening recommendations: GPO, ACL, Kerberos policies.</span><span data-lang="fr">Énumération complète de l'AD et cartographie des chemins d'attaque avec BloodHound. Exploitation Kerberoasting, AS-REP Roasting, lateral movement. Recommandations de durcissement : GPO, ACL, politiques Kerberos.</span></p>
+        <div class="pcard-foot">
+          <span class="pcard-tag">Offensive</span><span class="pcard-tag">AD</span><span class="pcard-tag">Red Team</span>
+        </div>
+      </div>
+      <div class="pcard">
+        <div class="pcard-icon">📡</div>
+        <div class="pcard-name">WiCrack.py — Wi-Fi Auditor</div>
+        <div class="pcard-stack">Python · Aircrack-ng · Scapy</div>
+        <p class="pcard-desc"><span data-lang="en">Python tool automating Wi-Fi network scanning, connected client detection, DoS attacks (deauth, MDK4) and 4-Way Handshake capture for security analysis.</span><span data-lang="fr">Outil Python automatisant le scan des réseaux Wi-Fi, la détection des clients, les attaques DoS (deauth, MDK4) et la capture de 4-Way Handshake.</span></p>
+        <div class="pcard-foot">
+          <span class="pcard-tag">Python</span><span class="pcard-tag">Wi-Fi</span><span class="pcard-tag">Scripting</span>
+        </div>
+      </div>
+      <div class="pcard">
+        <div class="pcard-icon">🎯</div>
+        <div class="pcard-name"><span data-lang="en">Vulnerable Machines Pentest</span><span data-lang="fr">Pentest Machines Vulnérables</span></div>
+        <div class="pcard-stack">TryHackMe · VulnLab · Metasploitable</div>
+        <p class="pcard-desc"><span data-lang="en">Service enumeration and exploitation (SMB, FTP, SSH, Web), Linux/Windows privilege escalation. Full PoC reports with corrective measures.</span><span data-lang="fr">Énumération et exploitation de services (SMB, FTP, SSH, Web), escalade de privilèges Linux/Windows. Rapports PoC complets avec mesures correctives.</span></p>
+        <div class="pcard-foot">
+          <span class="pcard-tag">CTF</span><span class="pcard-tag">PrivEsc</span><span class="pcard-tag">Reporting</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TERMINAL ===== -->
+<section id="terminal-section" class="bg-alt">
+  <div class="term-wrap">
+    <div class="s-label">Interactive</div>
+    <h2 class="s-title"><span data-lang="en">TRY THE <span class="hl">TERMINAL</span></span><span data-lang="fr">ESSAIE LE <span class="hl">TERMINAL</span></span></h2>
+    <div class="term-box reveal">
+      <div class="term-header">
+        <span class="tb tb-r"></span>
+        <span class="tb tb-y"></span>
+        <span class="tb tb-g"></span>
+        <span class="term-title">yasser@portfolio:~$</span>
+      </div>
+      <div class="term-body" id="termBody">
+        <div class="tline"><span class="suc">Welcome to Yasser El Karch's portfolio terminal v1.0</span></div>
+        <div class="tline"><span class="out">Type </span><span class="acc">help</span><span class="out"> to see available commands.</span></div>
+        <div class="tline">&nbsp;</div>
+      </div>
+      <div class="term-input-row">
+        <span class="ti-prompt">yasser@portfolio:~$&nbsp;</span>
+        <input id="term-input" type="text" autocomplete="off" spellcheck="false" placeholder="type a command..."/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section id="services">
+  <div class="max-w">
+    <div class="s-label"><span data-lang="en">What I Do</span><span data-lang="fr">Ce que je fais</span></div>
+    <h2 class="s-title"><span data-lang="en">SERVICES <span class="hl">OFFERED</span></span><span data-lang="fr">SERVICES <span class="hl">PROPOSÉS</span></span></h2>
+    <div class="svc-grid stagger">
+      <div class="svcard"><span class="svcard-icon">🔍</span><div class="svcard-name"><span data-lang="en">Network & System Pentest</span><span data-lang="fr">Pentest Réseau & Système</span></div><p class="svcard-desc"><span data-lang="en">Attack simulations on networks, Linux/Windows systems and Active Directory. Privilege escalation, domain compromise, executive report with prioritized remediation.</span><span data-lang="fr">Simulations d'attaques sur réseaux, systèmes Linux/Windows et Active Directory. Élévation de privilèges, compromission de domaine, rapport avec remédiation priorisée.</span></p></div>
+      <div class="svcard"><span class="svcard-icon">🌐</span><div class="svcard-name"><span data-lang="en">Web Application Pentest</span><span data-lang="fr">Pentest Applicatif Web</span></div><p class="svcard-desc"><span data-lang="en">OWASP Top 10 based application penetration tests: SQL injection, XSS, RFI, auth bypass, IDOR. Exploitation via Burp Suite and SQLmap with detailed PoC.</span><span data-lang="fr">Tests d'intrusion basés OWASP Top 10 : injection SQL, XSS, RFI, auth bypass, IDOR. Exploitation via Burp Suite et SQLmap avec PoC détaillés.</span></p></div>
+      <div class="svcard"><span class="svcard-icon">🏛</span><div class="svcard-name"><span data-lang="en">Active Directory Audit</span><span data-lang="fr">Audit Active Directory</span></div><p class="svcard-desc"><span data-lang="en">Complete AD configuration review, Kerberoasting and ACL abuse detection. Technical report with hardening recommendations delivered.</span><span data-lang="fr">Revue complète de la configuration AD, détection Kerberoasting et ACL abuse. Rapport technique avec recommandations de durcissement.</span></p></div>
+      <div class="svcard"><span class="svcard-icon">📋</span><div class="svcard-name"><span data-lang="en">IS Audit & Governance</span><span data-lang="fr">Audit & Gouvernance SI</span></div><p class="svcard-desc"><span data-lang="en">Security posture assessment per ISO 27001 and COBIT 5. Gap identification, remediation tracking via eFront ERM, compliance reporting.</span><span data-lang="fr">Évaluation selon ISO 27001 et COBIT 5. Identification des écarts, suivi des plans de remédiation, reporting de conformité.</span></p></div>
+      <div class="svcard"><span class="svcard-icon">📶</span><div class="svcard-name"><span data-lang="en">Network Security & VPN</span><span data-lang="fr">Sécurité Réseau & VPN</span></div><p class="svcard-desc"><span data-lang="en">Design and deployment of site-to-site VPN architectures (IPSec), secure network equipment configuration, traffic analysis and communication hardening.</span><span data-lang="fr">Conception et déploiement d'architectures VPN site-à-site (IPSec), configuration sécurisée des équipements et analyse du trafic.</span></p></div>
+      <div class="svcard"><span class="svcard-icon">📊</span><div class="svcard-name"><span data-lang="en">SIEM & Log Analysis</span><span data-lang="fr">SIEM & Analyse de Logs</span></div><p class="svcard-desc"><span data-lang="en">IBM QRadar SIEM integration and configuration for event correlation. Anomaly detection, log analysis, security alerting rules for continuous monitoring.</span><span data-lang="fr">Intégration IBM QRadar SIEM pour corrélation d'événements. Détection d'anomalies, analyse des logs, règles d'alerting pour supervision continue.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EDUCATION ===== -->
+<section id="education" class="bg-alt">
+  <div class="max-w">
+    <div class="s-label"><span data-lang="en">Academic Background</span><span data-lang="fr">Parcours académique</span></div>
+    <h2 class="s-title"><span data-lang="en">EDUCATION & <span class="hl">CERTIFICATIONS</span></span><span data-lang="fr">FORMATION & <span class="hl">CERTIFICATIONS</span></span></h2>
+    <div class="reveal">
+      <div class="edu-grid">
+        <div class="edc">
+          <div class="edc-yr">2025 – <span data-lang="en">Present</span><span data-lang="fr">Présent</span></div>
+          <div class="edc-deg">Master 2 <span data-lang="en">Professional</span><span data-lang="fr">Professionnel</span></div>
+          <div class="edc-field"><span data-lang="en">Networks & Telecommunications</span><span data-lang="fr">Réseaux et Télécommunications</span></div>
+          <div class="edc-school">Université Paris Saclay · Orsay, France</div>
+          <div class="edc-courses"><span data-lang="en">Network security · Virtualization SDN/NFV · Python for networks · IoT · Network core</span><span data-lang="fr">Sécurité réseaux · Virtualisation SDN/NFV · Python pour les réseaux · IoT · Cœur du réseau</span></div>
+        </div>
+        <div class="edc">
+          <div class="edc-yr">2018 – 2024</div>
+          <div class="edc-deg"><span data-lang="en">Engineering Degree</span><span data-lang="fr">Diplôme d'Ingénieur</span></div>
+          <div class="edc-field"><span data-lang="en">Telecommunications & Networks Engineering</span><span data-lang="fr">Génie des Systèmes de Télécommunications & Réseaux</span></div>
+          <div class="edc-school">ENSA · Tanger, Maroc</div>
+          <div class="edc-courses"><span data-lang="en">Network protocols · System security · Embedded programming · Distributed systems</span><span data-lang="fr">Protocoles réseau · Sécurité des systèmes · Programmation embarquée · Systèmes distribués</span></div>
+        </div>
+      </div>
+      <div class="certs-grid">
+        <div class="cert-c"><span class="cert-em">🎯</span><div><div class="cert-t">Junior Penetration Tester (eJPTv2)</div><div class="cert-o">INE Security</div></div></div>
+        <div class="cert-c"><span class="cert-em">🔐</span><div><div class="cert-t">Practical Ethical Hacking (PEH)</div><div class="cert-o">TCM Security</div></div></div>
+        <div class="cert-c"><span class="cert-em">🛡</span><div><div class="cert-t">Ethical Hacking Essentials (EHE)</div><div class="cert-o">EC-Council</div></div></div>
+        <div class="cert-c"><span class="cert-em">⚔</span><div><div class="cert-t">Jr. Penetration Tester Path</div><div class="cert-o">TryHackMe</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <div class="max-w">
+    <div class="s-label">Contact</div>
+    <h2 class="s-title"><span data-lang="en">GET IN <span class="hl">TOUCH</span></span><span data-lang="fr">ME <span class="hl">CONTACTER</span></span></h2>
+    <div class="contact-grid">
+      <div class="reveal-left">
+        <p class="con-desc">
+          <span data-lang="en">I'm actively looking for a <strong>6-month end-of-study internship starting March</strong>. Feel free to reach out to discuss opportunities in offensive security, auditing or penetration testing.</span>
+          <span data-lang="fr">Je recherche activement un <strong>stage de fin d'études de 6 mois à partir de Mars</strong>. N'hésitez pas à me contacter pour discuter d'opportunités en sécurité offensive, audit ou pentest.</span>
+        </p>
+        <div class="con-links">
+          <a class="con-link" href="mailto:yasser.elkarch@gmail.com"><span class="cic">✉</span>yasser.elkarch@gmail.com</a>
+          <a class="con-link" href="tel:+33759275094"><span class="cic">☎</span>+33 7 59 27 50 94</a>
+          <a class="con-link" href="https://linkedin.com/yasser-el-karch" target="_blank"><span class="cic">in</span>linkedin.com/yasser-el-karch</a>
+          <a class="con-link" href="https://github.com/YasserElkarch" target="_blank"><span class="cic">⌥</span>github.com/YasserElkarch</a>
+          <a class="con-link" href="#"><span class="cic">◎</span>Paris, France</a>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="cf">
+          <div class="cf-row">
+            <input class="cfi" type="text" placeholder="Name / Nom"/>
+            <input class="cfi" type="email" placeholder="Email"/>
+          </div>
+          <input class="cfi" type="text" placeholder="Subject / Sujet"/>
+          <textarea class="cfi" placeholder="Message..."></textarea>
+          <button class="cf-btn"><span data-lang="en">Send Message</span><span data-lang="fr">Envoyer</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 <span>Yasser El Karch</span> · <span data-lang="en">Cybersecurity Engineer</span><span data-lang="fr">Ingénieur Cybersécurité</span> · Paris, France</p>
+</footer>
 
 <script>
-  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  let interval = null;
+/* ============================================================
+   CURSOR
+   ============================================================ */
+const cur = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX; my=e.clientY;
+  cur.style.left=mx+'px'; cur.style.top=my+'px';
+});
+function animRing(){
+  rx+=(mx-rx)*.12; ry+=(my-ry)*.12;
+  ring.style.left=rx+'px'; ring.style.top=ry+'px';
+  requestAnimationFrame(animRing);
+}
+animRing();
+document.addEventListener('mousedown',()=>document.body.classList.add('clicking'));
+document.addEventListener('mouseup',()=>document.body.classList.remove('clicking'));
+document.querySelectorAll('a,button,.tc,.atag,.pcard,.svcard,.hs-card,.asc,.edc,.cert-c,.tli').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('hovering'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('hovering'));
+});
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const hackerTitle = document.querySelector(".hacker-title");
-    const originalText = hackerTitle.innerText;
-
-    hackerTitle.addEventListener("mouseover", () => {
-      let iteration = 0;
-      clearInterval(interval);
-
-      interval = setInterval(() => {
-        const newText = originalText
-          .split("")
-          .map((char, index) => {
-            if (char === " ") return " ";
-            if (index < iteration) return originalText[index];
-            return letters[Math.floor(Math.random() * 26)];
-          })
-          .join("");
-
-        hackerTitle.innerText = newText;
-
-        if (iteration >= originalText.length) {
-          clearInterval(interval);
-          hackerTitle.innerText = originalText;
+/* ============================================================
+   PARTICLES
+   ============================================================ */
+(function(){
+  const c=document.getElementById('particles-canvas');
+  const ctx=c.getContext('2d');
+  let W,H,particles=[];
+  function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;}
+  resize(); window.addEventListener('resize',resize);
+  const N=80;
+  function mkP(){return{x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,r:Math.random()*1.5+.5,op:Math.random()*.6+.2};}
+  for(let i=0;i<N;i++)particles.push(mkP());
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    const isDark=document.documentElement.getAttribute('data-theme')==='dark';
+    const col=isDark?'0,229,255':'0,80,255';
+    particles.forEach((p,i)=>{
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.x<0)p.x=W; if(p.x>W)p.x=0;
+      if(p.y<0)p.y=H; if(p.y>H)p.y=0;
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${col},${p.op})`;
+      ctx.fill();
+      // lines to nearby particles
+      for(let j=i+1;j<N;j++){
+        const q=particles[j];
+        const d=Math.hypot(p.x-q.x,p.y-q.y);
+        if(d<120){
+          ctx.beginPath();
+          ctx.moveTo(p.x,p.y); ctx.lineTo(q.x,q.y);
+          ctx.strokeStyle=`rgba(${col},${(1-d/120)*.12})`;
+          ctx.lineWidth=.6;
+          ctx.stroke();
         }
-
-        iteration += 1 / 2;
-      }, 30);
+      }
     });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ============================================================
+   PROGRESS BAR
+   ============================================================ */
+window.addEventListener('scroll',()=>{
+  const bar=document.getElementById('progress-bar');
+  const pct=(window.scrollY/(document.body.scrollHeight-window.innerHeight))*100;
+  bar.style.width=pct+'%';
+});
+
+/* ============================================================
+   HACKER NAME
+   ============================================================ */
+const CHARS='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%!?';
+const hn=document.getElementById('heroName');
+const nameParts=[{el:hn.querySelector('.n1'),orig:'YASSER'},{el:hn.querySelector('.n2'),orig:'EL KARCH'}];
+hn.addEventListener('mouseover',()=>{
+  nameParts.forEach(({el,orig})=>{
+    let it=0; clearInterval(el._iv);
+    el._iv=setInterval(()=>{
+      el.innerText=orig.split('').map((c,i)=>{
+        if(c===' ')return ' ';
+        if(i<it)return orig[i];
+        return CHARS[Math.floor(Math.random()*CHARS.length)];
+      }).join('');
+      if(it>=orig.length){clearInterval(el._iv);el.innerText=orig;}
+      it+=.5;
+    },28);
   });
+});
+
+/* ============================================================
+   TYPED EFFECT
+   ============================================================ */
+const typedEl=document.getElementById('typed-text');
+const phrases={
+  en:['Penetration Tester','Active Directory Security Expert','Cybersecurity Engineer','Bug Hunter','Red Team Enthusiast'],
+  fr:['Pentesteur','Expert Sécurité Active Directory','Ingénieur Cybersécurité','Chasseur de bugs','Passionné Red Team']
+};
+let curLang='en',phIdx=0,charIdx=0,deleting=false;
+function type(){
+  const list=phrases[curLang];
+  const full=list[phIdx];
+  typedEl.textContent=deleting?full.slice(0,charIdx--):full.slice(0,charIdx++);
+  if(!deleting&&charIdx>full.length){setTimeout(()=>{deleting=true;setTimeout(type,400);},1600);return;}
+  if(deleting&&charIdx<0){deleting=false;phIdx=(phIdx+1)%list.length;charIdx=0;}
+  setTimeout(type,deleting?45:80);
+}
+type();
+
+/* ============================================================
+   LANG TOGGLE
+   ============================================================ */
+function setLang(l){
+  curLang=l;
+  document.body.className=document.body.className.replace(/lang-\w+/,'')+'lang-'+l;
+  document.getElementById('btn-en').classList.toggle('active',l==='en');
+  document.getElementById('btn-fr').classList.toggle('active',l==='fr');
+  phIdx=0;charIdx=0;deleting=false;
+}
+
+/* ============================================================
+   THEME TOGGLE
+   ============================================================ */
+function toggleTheme(){
+  const html=document.documentElement;
+  const isDark=html.getAttribute('data-theme')==='dark';
+  html.setAttribute('data-theme',isDark?'light':'dark');
+  document.getElementById('themeBtn').textContent=isDark?'🌙':'☀️';
+}
+
+/* ============================================================
+   MOBILE NAV
+   ============================================================ */
+function toggleMob(){document.getElementById('mobileNav').classList.toggle('open');}
+function closeMob(){document.getElementById('mobileNav').classList.remove('open');}
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+const revObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');revObs.unobserve(e.target);}});
+},{threshold:.08});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale,.stagger').forEach(el=>revObs.observe(el));
+
+/* ============================================================
+   SKILL BARS
+   ============================================================ */
+const barObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.sbar-fill').forEach(b=>b.style.width=b.dataset.w+'%');
+      barObs.unobserve(e.target);
+    }
+  });
+},{threshold:.15});
+document.querySelectorAll('.skills-wrap').forEach(el=>barObs.observe(el));
+
+/* ============================================================
+   ACTIVE NAV
+   ============================================================ */
+const navAs=document.querySelectorAll('.nav-links a');
+const secs=document.querySelectorAll('section[id]');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  secs.forEach(s=>{if(window.scrollY>=s.offsetTop-100)cur=s.id;});
+  navAs.forEach(a=>{
+    a.classList.toggle('active',a.getAttribute('href')==='#'+cur);
+  });
+});
+
+/* ============================================================
+   TERMINAL
+   ============================================================ */
+const termData={
+  en:{
+    help:`<span class="acc">Available commands:</span>
+  <span class="out">whoami</span>      — About Yasser
+  <span class="out">skills</span>      — Technical skills
+  <span class="out">experience</span>  — Work history
+  <span class="out">certs</span>       — Certifications
+  <span class="out">contact</span>     — Contact info
+  <span class="out">tools</span>       — Security tools
+  <span class="out">clear</span>       — Clear terminal`,
+    whoami:`<span class="suc">Yasser El Karch</span> — Cybersecurity Engineer
+  Master 2 @ Université Paris Saclay
+  Certified: eJPTv2 | PEH | EHE
+  Specialization: Offensive Security / Pentest
+  Location: Paris, France
+  Status: <span class="acc">Seeking 6-month internship from March 2025</span>`,
+    skills:`<span class="acc">Core Skills:</span>
+  [██████████] 90% Penetration Testing
+  [█████████ ] 88% Active Directory Security
+  [████████  ] 85% Web App Pentest (OWASP)
+  [████████  ] 82% Network Security
+  [███████   ] 78% Python / Scripting
+  [███████   ] 75% SIEM / Log Analysis`,
+    experience:`<span class="acc">Work Experience:</span>
+  [2024–2025] IS Security Auditor @ La Banque Populaire
+  [2024]      Pentester & AD Security @ La Banque Populaire (Internship)
+  [2023]      IS Security Engineer @ INWI Telecom (Internship)`,
+    certs:`<span class="acc">Certifications:</span>
+  ✓ Junior Penetration Tester (eJPTv2) — INE Security
+  ✓ Practical Ethical Hacking (PEH) — TCM Security
+  ✓ Ethical Hacking Essentials (EHE) — EC-Council
+  ✓ Jr. Penetration Tester Path — TryHackMe`,
+    contact:`<span class="acc">Contact Information:</span>
+  Email:    yasser.elkarch@gmail.com
+  Phone:    +33 7 59 27 50 94
+  LinkedIn: linkedin.com/yasser-el-karch
+  GitHub:   github.com/YasserElkarch
+  Location: Paris, France`,
+    tools:`<span class="acc">Security Arsenal:</span>
+  Offensive:  Metasploit, Burp Suite, Nmap, BloodHound,
+              Impacket, SQLmap, CrackMapExec, Gobuster
+  Defensive:  Nessus, IBM QRadar, Tenable IE, Wireshark
+  Scripting:  Python, Bash, PowerShell`,
+  },
+  fr:{
+    help:`<span class="acc">Commandes disponibles :</span>
+  <span class="out">whoami</span>      — À propos de Yasser
+  <span class="out">skills</span>      — Compétences techniques
+  <span class="out">experience</span>  — Expériences
+  <span class="out">certs</span>       — Certifications
+  <span class="out">contact</span>     — Coordonnées
+  <span class="out">tools</span>       — Outils de sécurité
+  <span class="out">clear</span>       — Effacer le terminal`,
+    whoami:`<span class="suc">Yasser El Karch</span> — Ingénieur Cybersécurité
+  Master 2 @ Université Paris Saclay
+  Certifié : eJPTv2 | PEH | EHE
+  Spécialisation : Sécurité Offensive / Pentest
+  Localisation : Paris, France
+  Statut : <span class="acc">Recherche stage 6 mois dès Mars 2025</span>`,
+    skills:`<span class="acc">Compétences clés :</span>
+  [██████████] 90% Tests d'intrusion
+  [█████████ ] 88% Sécurité Active Directory
+  [████████  ] 85% Pentest Web (OWASP)
+  [████████  ] 82% Sécurité réseau
+  [███████   ] 78% Python / Scripting
+  [███████   ] 75% SIEM / Analyse de logs`,
+    experience:`<span class="acc">Expériences professionnelles :</span>
+  [2024–2025] Auditeur Sécurité SI @ La Banque Populaire
+  [2024]      Pentester & Sécurité AD @ La Banque Populaire (Stage)
+  [2023]      Ingénieur Sécurité SI @ INWI Télécom (Stage)`,
+    certs:`<span class="acc">Certifications :</span>
+  ✓ Junior Penetration Tester (eJPTv2) — INE Security
+  ✓ Practical Ethical Hacking (PEH) — TCM Security
+  ✓ Ethical Hacking Essentials (EHE) — EC-Council
+  ✓ Jr. Penetration Tester Path — TryHackMe`,
+    contact:`<span class="acc">Coordonnées :</span>
+  Email :    yasser.elkarch@gmail.com
+  Téléphone: +33 7 59 27 50 94
+  LinkedIn : linkedin.com/yasser-el-karch
+  GitHub :   github.com/YasserElkarch
+  Lieu :     Paris, France`,
+    tools:`<span class="acc">Arsenal Sécurité :</span>
+  Offensif :  Metasploit, Burp Suite, Nmap, BloodHound,
+              Impacket, SQLmap, CrackMapExec, Gobuster
+  Défensif :  Nessus, IBM QRadar, Tenable IE, Wireshark
+  Scripting : Python, Bash, PowerShell`,
+  }
+};
+
+const termBody=document.getElementById('termBody');
+const termInput=document.getElementById('term-input');
+let history=[],histIdx=-1;
+
+function addLine(html,cls=''){
+  const d=document.createElement('div');
+  d.className='tline'+(cls?' '+cls:'');
+  d.innerHTML=html; termBody.appendChild(d);
+  termBody.scrollTop=termBody.scrollHeight;
+}
+
+termInput.addEventListener('keydown',e=>{
+  if(e.key==='Enter'){
+    const cmd=termInput.value.trim().toLowerCase();
+    if(!cmd)return;
+    history.unshift(cmd); histIdx=-1;
+    addLine(`<span class="prompt">yasser@portfolio:~$</span> <span class="cmd">${cmd}</span>`);
+    termInput.value='';
+    const lang=curLang;
+    if(cmd==='clear'){termBody.innerHTML='';return;}
+    const data=termData[lang];
+    if(data[cmd]){
+      data[cmd].split('\n').forEach(l=>addLine(`<span class="out" style="white-space:pre">${l}</span>`));
+    } else {
+      addLine(`<span class="err">Command not found: ${cmd}. Type 'help' for available commands.</span>`);
+    }
+    addLine('&nbsp;');
+  }
+  if(e.key==='ArrowUp'){histIdx=Math.min(histIdx+1,history.length-1);termInput.value=history[histIdx]||'';}
+  if(e.key==='ArrowDown'){histIdx=Math.max(histIdx-1,-1);termInput.value=histIdx>=0?history[histIdx]:'';}
+});
+// click anywhere in terminal focuses input
+document.querySelector('.term-box').addEventListener('click',()=>termInput.focus());
+// auto-focus terminal on visible
+const termObs=new IntersectionObserver(e=>{if(e[0].isIntersecting)termInput.focus();},{threshold:.5});
+termObs.observe(document.getElementById('terminal-section'));
 </script>
 </body>
 </html>
