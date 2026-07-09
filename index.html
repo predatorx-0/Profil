@@ -4,7 +4,13 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Yasser El Karch — Cybersecurity Engineer</title>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Clash+Display:wght@400;500;600;700&family=Cabinet+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet">
+<meta name="description" content="Yasser El Karch — Ingénieur Cybersécurité (Master 2, Université Paris-Saclay). Sécurité offensive & défensive : pentest, Active Directory, SOC, SIEM, ISO 27001. Certifié eJPTv2, PEH, CC (ISC)²."/>
+<meta property="og:title" content="Yasser El Karch — Cybersecurity Engineer"/>
+<meta property="og:description" content="Pentest · Active Directory · SOC · SIEM · ISO 27001 — Certifié eJPTv2, PEH, CC (ISC)²"/>
+<meta property="og:type" content="website"/>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%90%3C/text%3E%3C/svg%3E"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=cabinet-grotesk@400,500,700,800&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
    CSS VARIABLES — DARK / LIGHT THEMES
@@ -89,6 +95,16 @@ body{
 body.clicking #cursor{width:8px;height:8px;background:var(--accent);}
 body.hovering #cursor{width:6px;height:6px;background:var(--accent);border-color:transparent;}
 body.hovering #cursor-ring{width:50px;height:50px;border-color:rgba(0,229,255,.25);}
+
+/* touch devices & reduced motion: fall back to native cursor */
+@media (hover:none),(pointer:coarse){
+  body,#term-input,.lang-btn,.theme-toggle,.hamburger,.cf-btn{cursor:auto;}
+  #cursor,#cursor-ring{display:none;}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}
+  html{scroll-behavior:auto;}
+}
 
 /* crosshair lines */
 #cursor::before,#cursor::after{
@@ -820,7 +836,7 @@ footer span{color:var(--accent);}
 /* ============================================================
    I18N hidden
    ============================================================ */
-[data-lang]{display:block;}
+[data-lang]{display:inline;}
 .lang-fr [data-lang="en"]{display:none!important;}
 .lang-en [data-lang="fr"]{display:none!important;}
 
@@ -912,10 +928,11 @@ footer span{color:var(--accent);}
         </div>
         <p class="hero-desc">
           <span data-lang="en">
-            Network &amp; Telecom Engineer, <strong>and Master’s student at Paris-Saclay University</strong>. Certified <strong>eJPTv2, PEH &amp; EHE</strong>. I bridge the gap between offensive security and defensive strategy, including governance (ISO 27001), SIEM, and systems hardening.
+            Cybersecurity Engineer <strong>(Master 2, Université Paris-Saclay)</strong>, specialized in Networks &amp; Telecoms. Certified <strong>eJPTv2, PEH &amp; CC (ISC)²</strong>. I bridge offensive security (pentest, Active Directory) and defensive operations — SOC, SIEM, incident response — with governance (ISO 27001).
           </span>
           <span data-lang="fr">
-            Ingénieur en Réseaux &amp; Télécommunications, <strong>et étudiant en Master 2 à l'Université Paris-Saclay</strong>. Certifié <strong>eJPTv2, PEH &amp; EHE</strong>. Je combine une expertise technique offensive avec une solide compréhension des enjeux de gouvernance (ISO 27001) et de défense (SIEM, Hardening)
+            Ingénieur en cybersécurité <strong>(Master 2, Université Paris-Saclay)</strong>, spécialisé en Réseaux &amp; Télécoms. Certifié <strong>eJPTv2, PEH &amp; CC (ISC)²</strong>. Je combine sécurité offensive (pentest, Active Directory) et opérations défensives — SOC, SIEM, réponse à incident — avec la gouvernance (ISO 27001).
+          </span>
         </p>
         <div class="hero-btns">
           <a class="btn-p" href="#contact">
@@ -934,9 +951,9 @@ footer span{color:var(--accent);}
         <div class="hero-langs">
           <span data-lang="en">Languages:</span>
           <span data-lang="fr">Langues :</span>
-          <span class="hero-lang-pill native">Arabic — Native</span>
-          <span class="hero-lang-pill">French — Fluent</span>
-          <span class="hero-lang-pill">English — Bilingual</span>
+          <span class="hero-lang-pill native"><span data-lang="en">Arabic — Native</span><span data-lang="fr">Arabe — Langue maternelle</span></span>
+          <span class="hero-lang-pill"><span data-lang="en">French — Fluent</span><span data-lang="fr">Français — Courant</span></span>
+          <span class="hero-lang-pill"><span data-lang="en">English — Fluent</span><span data-lang="fr">Anglais — Courant</span></span>
         </div>
       </div>
       <div class="hero-right">
@@ -958,12 +975,12 @@ footer span{color:var(--accent);}
         </div>
         <div class="status-pill">
           <span class="spd"></span>
-          <span data-lang="en">Available — 6-month internship from March</span>
-          <span data-lang="fr">Disponible — Stage 6 mois dès Mars</span>
+          <span data-lang="en">Open to work — Cybersecurity Consultant</span>
+          <span data-lang="fr">Ouvert aux opportunités — Consultant Cybersécurité</span>
         </div>
         <div class="hero-stats stagger">
           <div class="hs-card has-tip" data-tip="Active Directory audits"><div class="hs-num">10+</div><div class="hs-lbl">Audits</div></div>
-          <div class="hs-card has-tip" data-tip="Security certifications"><div class="hs-num">3</div><div class="hs-lbl">Certs</div></div>
+          <div class="hs-card has-tip" data-tip="Security certifications"><div class="hs-num">4</div><div class="hs-lbl">Certs</div></div>
           <div class="hs-card has-tip" data-tip="Years of engineering studies"><div class="hs-num">6</div><div class="hs-lbl"><span data-lang="en">Yrs Study</span><span data-lang="fr">Ans études</span></div></div>
         </div>
       </div>
@@ -979,23 +996,24 @@ footer span{color:var(--accent);}
     <div class="about-grid">
       <div class="reveal-left">
         <p class="about-text">
-          <span data-lang="en">Network and Telecom Engineer, currently completing my <strong>Master 2 at Université Paris Saclay</strong>, with a strong specialization in <strong>offensive security</strong>. Certified <strong>eJPTv2, PEH and EHE</strong>, I have hands-on experience in penetration testing, security audits and information systems protection gained in real banking environments.</span>
-          <span data-lang="fr">Ingénieur en Réseaux et Télécommunications, actuellement en <strong>Master 2 à l'Université Paris Saclay</strong>, avec une spécialisation affirmée en <strong>sécurité offensive</strong>. Certifié <strong>eJPTv2, PEH et EHE</strong>, j'ai acquis une solide expérience en tests d'intrusion, audits de sécurité et protection des SI en environnements bancaires réels.</span>
+          <span data-lang="en">Cybersecurity Engineer (<strong>Master 2 at Université Paris-Saclay</strong>), specialized in Networks &amp; Telecoms. Certified <strong>eJPTv2, PEH and CC (ISC)²</strong>, I have hands-on experience in penetration testing, security audits and SOC operations gained in real banking and industrial environments — from Active Directory compromise to incident response with Cortex XDR and IBM QRadar.</span>
+          <span data-lang="fr">Ingénieur en cybersécurité (<strong>Master 2 à l'Université Paris-Saclay</strong>), spécialisé en Réseaux &amp; Télécoms. Certifié <strong>eJPTv2, PEH et CC (ISC)²</strong>, j'ai acquis une solide expérience en tests d'intrusion, audits de sécurité et opérations SOC en environnements bancaires et industriels réels — de la compromission Active Directory à la réponse à incident via Cortex XDR et IBM QRadar.</span>
         </p>
         <p class="about-text">
-          <span data-lang="en">I am currently seeking a <strong>6-month end-of-study internship starting March</strong> to leverage my expertise in vulnerability detection, analysis and prevention.</span>
-          <span data-lang="fr">Je cherche actuellement un <strong>stage de fin d'études de 6 mois à partir de Mars</strong> afin de mettre à profit mon expertise en détection, analyse et prévention des vulnérabilités.</span>
+          <span data-lang="en">I am looking for a <strong>Cybersecurity Consultant position</strong> to help organizations manage risk, achieve compliance and strengthen their security posture.</span>
+          <span data-lang="fr">Je recherche un <strong>poste de Consultant en cybersécurité</strong> pour accompagner les organisations dans la gestion des risques, la conformité et le renforcement de leur posture de sécurité.</span>
         </p>
         <div class="about-tags">
           <span class="atag">Pentest</span><span class="atag">Active Directory</span><span class="atag">OWASP Top 10</span>
-          <span class="atag">Kerberoasting</span><span class="atag">Lateral Movement</span><span class="atag">ISO 27001</span>
-          <span class="atag">SIEM / QRadar</span><span class="atag">Python</span><span class="atag">Bash</span>
+          <span class="atag">Kerberoasting</span><span class="atag">SOC / Incident Response</span><span class="atag">ISO 27001</span>
+          <span class="atag">SIEM / QRadar</span><span class="atag">Cortex XDR</span><span class="atag">Threat Hunting</span>
+          <span class="atag">Python</span><span class="atag">Bash</span><span class="atag">Docker / K8s</span>
         </div>
       </div>
       <div class="reveal-right">
         <div class="about-stats">
           <div class="asc"><div class="asc-num">10+</div><div class="asc-lbl"><span data-lang="en">AD Audits</span><span data-lang="fr">Audits AD</span></div></div>
-          <div class="asc"><div class="asc-num">3</div><div class="asc-lbl"><span data-lang="en">Certifications</span><span data-lang="fr">Certifications</span></div></div>
+          <div class="asc"><div class="asc-num">4</div><div class="asc-lbl"><span data-lang="en">Certifications</span><span data-lang="fr">Certifications</span></div></div>
           <div class="asc"><div class="asc-num">3</div><div class="asc-lbl"><span data-lang="en">Companies</span><span data-lang="fr">Entreprises</span></div></div>
           <div class="asc"><div class="asc-num">70%</div><div class="asc-lbl"><span data-lang="en">Remediation Rate</span><span data-lang="fr">Taux remédiation</span></div></div>
         </div>
@@ -1021,7 +1039,7 @@ footer span{color:var(--accent);}
         <div class="sbar"><div class="sbar-top"><span class="sbar-name">Web Application Pentest</span><span class="sbar-pct">75%</span></div><div class="sbar-track"><div class="sbar-fill" data-w="75"></div></div></div>
         <div class="sbar"><div class="sbar-top"><span class="sbar-name">Network Security</span><span class="sbar-pct">85%</span></div><div class="sbar-track"><div class="sbar-fill" data-w="85"></div></div></div>
         <div class="sbar"><div class="sbar-top"><span class="sbar-name">Python / Scripting</span><span class="sbar-pct">75%</span></div><div class="sbar-track"><div class="sbar-fill" data-w="75"></div></div></div>
-        <div class="sbar"><div class="sbar-top"><span class="sbar-name">Incident Responce / Log Analysis</span><span class="sbar-pct">85%</span></div><div class="sbar-track"><div class="sbar-fill" data-w="85"></div></div></div>
+        <div class="sbar"><div class="sbar-top"><span class="sbar-name">Incident Response / SOC</span><span class="sbar-pct">85%</span></div><div class="sbar-track"><div class="sbar-fill" data-w="85"></div></div></div>
       </div>
       <div class="reveal-right">
         <div class="skill-col-title"><span data-lang="en">Tools & Arsenal</span><span data-lang="fr">Outils & Arsenal</span></div>
@@ -1031,17 +1049,25 @@ footer span{color:var(--accent);}
             <span class="tc">Metasploit</span><span class="tc">Burp Suite</span><span class="tc">Nmap</span>
             <span class="tc">BloodHound</span><span class="tc">Impacket</span><span class="tc">SQLmap</span>
             <span class="tc">Gobuster</span><span class="tc">CrackMapExec</span><span class="tc">ZAP Proxy</span>
+            <span class="tc">OpenVAS</span>
           </div>
-          <div class="tcat"><span data-lang="en">Defensive</span><span data-lang="fr">Défensif</span></div>
+          <div class="tcat"><span data-lang="en">Defensive & Governance</span><span data-lang="fr">Défensif & Gouvernance</span></div>
           <div class="tchips">
             <span class="tc">Nessus</span><span class="tc">IBM QRadar</span><span class="tc">Tenable IE</span>
-            <span class="tc">Wireshark</span><span class="tc">Cortex XDE</span><span class="tc">Tanium</span>
-            <span class="tc">MX Cyber</span><span class="tc">CertWeb</span><span class="tc">XMCO Serenity</span>
+            <span class="tc">Cortex XDR</span><span class="tc">Tanium</span><span class="tc">Rapid7</span>
+            <span class="tc">XM Cyber</span><span class="tc">XMCO Serenity</span><span class="tc">CertWeb</span>
+            <span class="tc">Wireshark</span><span class="tc">ISO 27001</span><span class="tc">eFront ERM</span>
           </div>
           <div class="tcat"><span data-lang="en">Scripting & Systems</span><span data-lang="fr">Scripting & Systèmes</span></div>
           <div class="tchips">
             <span class="tc">Python</span><span class="tc">Bash</span><span class="tc">PowerShell</span>
+            <span class="tc">Java</span><span class="tc">MySQL</span><span class="tc">C</span>
             <span class="tc">Linux</span><span class="tc">Windows AD</span><span class="tc">VPN IPSec</span>
+          </div>
+          <div class="tcat"><span data-lang="en">Cloud & DevSecOps</span><span data-lang="fr">Cloud & DevSecOps</span></div>
+          <div class="tchips">
+            <span class="tc">Docker</span><span class="tc">Kubernetes</span><span class="tc">Azure</span>
+            <span class="tc">AWS</span><span class="tc">CI/CD</span><span class="tc">VMware</span>
           </div>
         </div>
       </div>
@@ -1058,8 +1084,24 @@ footer span{color:var(--accent);}
       <div class="tli">
         <span class="tli-dot"></span>
         <div class="tli-head">
+          <div class="tli-role"><span data-lang="en">Cybersecurity Engineer — SOC</span><span data-lang="fr">Ingénieur Cybersécurité — SOC</span></div>
+          <div class="tli-date"><span data-lang="en">Apr – Sep 2026</span><span data-lang="fr">Avr – Sep 2026</span></div>
+        </div>
+        <div class="tli-co">Stordata, <span data-lang="en">at</span><span data-lang="fr">chez</span> VINCI Construction GP · <span>La Défense, Paris</span> · <span data-lang="en">End-of-study internship</span><span data-lang="fr">Stage de fin d'études</span></div>
+        <ul class="tli-ul">
+          <li><span data-lang="en">Detection, analysis and qualification of security events within a SOC, contributing to rapid threat identification.</span><span data-lang="fr">Détection, analyse et qualification d'événements de sécurité au sein d'un SOC, contribuant à l'identification rapide des menaces.</span></li>
+          <li><span data-lang="en">Incident investigation and response with Cortex XDR, prioritizing and escalating critical alerts.</span><span data-lang="fr">Investigation et réponse aux incidents via Cortex XDR, avec priorisation et escalade des alertes critiques.</span></li>
+          <li><span data-lang="en">Vulnerability identification and remediation, driving patching through Tanium, Rapid7 and XM Cyber.</span><span data-lang="fr">Identification et remédiation des vulnérabilités en pilotant les correctifs via Tanium, Rapid7 et XM Cyber.</span></li>
+          <li><span data-lang="en">Dark web threat hunting with XMCO Serenity to detect data leaks and potential compromises.</span><span data-lang="fr">Threat hunting sur le dark web à l'aide de XMCO Serenity, visant à détecter les fuites de données et compromissions potentielles.</span></li>
+          <li><span data-lang="en">In-depth analysis and classification of malicious emails (phishing, spam, fraud) via CertWeb, improving attack campaign detection.</span><span data-lang="fr">Analyse approfondie et classification d'emails malveillants (phishing, spam, fraude) via CertWeb, améliorant la détection des campagnes d'attaque.</span></li>
+          <li><span data-lang="en">User awareness training on cyber risks and best practices, reducing the human factor.</span><span data-lang="fr">Sensibilisation des utilisateurs aux risques cyber et aux bonnes pratiques, contribuant à la réduction du facteur humain.</span></li>
+        </ul>
+      </div>
+      <div class="tli">
+        <span class="tli-dot"></span>
+        <div class="tli-head">
           <div class="tli-role"><span data-lang="en">IS Security Auditor</span><span data-lang="fr">Auditeur Sécurité SI</span></div>
-          <div class="tli-date">Déc 2024 – Août 2025</div>
+          <div class="tli-date"><span data-lang="en">Dec 2024 – Aug 2025</span><span data-lang="fr">Déc 2024 – Août 2025</span></div>
         </div>
         <div class="tli-co">La Banque Populaire · <span>Casablanca, Maroc</span> · <span data-lang="en">Full-time</span><span data-lang="fr">CDI</span></div>
         <ul class="tli-ul">
@@ -1074,7 +1116,7 @@ footer span{color:var(--accent);}
         <span class="tli-dot"></span>
         <div class="tli-head">
           <div class="tli-role"><span data-lang="en">Pentester & Active Directory Security</span><span data-lang="fr">Pentester & Sécurité Active Directory</span></div>
-          <div class="tli-date">Fév – Juin 2024</div>
+          <div class="tli-date"><span data-lang="en">Feb – Jun 2024</span><span data-lang="fr">Fév – Juin 2024</span></div>
         </div>
         <div class="tli-co">La Banque Populaire · <span>Casablanca, Maroc</span> · <span data-lang="en">Internship</span><span data-lang="fr">Stage</span></div>
         <ul class="tli-ul">
@@ -1088,7 +1130,7 @@ footer span{color:var(--accent);}
         <span class="tli-dot"></span>
         <div class="tli-head">
           <div class="tli-role"><span data-lang="en">IS Security Engineer</span><span data-lang="fr">Ingénieur Sécurité SI</span></div>
-          <div class="tli-date">Juil – Août 2023</div>
+          <div class="tli-date"><span data-lang="en">Jul – Aug 2023</span><span data-lang="fr">Juil – Août 2023</span></div>
         </div>
         <div class="tli-co">INWI — <span data-lang="en">Telecom Operator</span><span data-lang="fr">Opérateur Télécom</span> · <span>Casablanca, Maroc</span></div>
         <ul class="tli-ul">
@@ -1128,7 +1170,7 @@ footer span{color:var(--accent);}
       <div class="pcard">
         <div class="pcard-icon">🎯</div>
         <div class="pcard-name"><span data-lang="en">Vulnerable Machines Pentest</span><span data-lang="fr">Pentest Machines Vulnérables</span></div>
-        <div class="pcard-stack">TryHackMe · VulnLab · Metasploitable</div>
+        <div class="pcard-stack">Root Me · TryHackMe · VulnLab · Metasploitable 2/3</div>
         <p class="pcard-desc"><span data-lang="en">Service enumeration and exploitation (SMB, FTP, SSH, Web), Linux/Windows privilege escalation. Full PoC reports with corrective measures.</span><span data-lang="fr">Énumération et exploitation de services (SMB, FTP, SSH, Web), escalade de privilèges Linux/Windows. Rapports PoC complets avec mesures correctives.</span></p>
         <div class="pcard-foot">
           <span class="pcard-tag">CTF</span><span class="pcard-tag">PrivEsc</span><span class="pcard-tag">Reporting</span>
@@ -1174,7 +1216,7 @@ footer span{color:var(--accent);}
       <div class="svcard"><span class="svcard-icon">🏛</span><div class="svcard-name"><span data-lang="en">Active Directory Audit</span><span data-lang="fr">Audit Active Directory</span></div><p class="svcard-desc"><span data-lang="en">Complete AD configuration review, Kerberoasting and ACL abuse detection. Technical report with hardening recommendations delivered.</span><span data-lang="fr">Revue complète de la configuration AD, détection Kerberoasting et ACL abuse. Rapport technique avec recommandations de durcissement.</span></p></div>
       <div class="svcard"><span class="svcard-icon">📋</span><div class="svcard-name"><span data-lang="en">IS Audit & Governance</span><span data-lang="fr">Audit & Gouvernance SI</span></div><p class="svcard-desc"><span data-lang="en">Security posture assessment per ISO 27001 and COBIT 5. Gap identification, remediation tracking via eFront ERM, compliance reporting.</span><span data-lang="fr">Évaluation selon ISO 27001 et COBIT 5. Identification des écarts, suivi des plans de remédiation, reporting de conformité.</span></p></div>
       <div class="svcard"><span class="svcard-icon">📶</span><div class="svcard-name"><span data-lang="en">Network Security & VPN</span><span data-lang="fr">Sécurité Réseau & VPN</span></div><p class="svcard-desc"><span data-lang="en">Design and deployment of site-to-site VPN architectures (IPSec), secure network equipment configuration, traffic analysis and communication hardening.</span><span data-lang="fr">Conception et déploiement d'architectures VPN site-à-site (IPSec), configuration sécurisée des équipements et analyse du trafic.</span></p></div>
-      <div class="svcard"><span class="svcard-icon">📊</span><div class="svcard-name"><span data-lang="en">SIEM & Log Analysis</span><span data-lang="fr">SIEM & Analyse de Logs</span></div><p class="svcard-desc"><span data-lang="en">IBM QRadar SIEM integration and configuration for event correlation. Anomaly detection, log analysis, security alerting rules for continuous monitoring.</span><span data-lang="fr">Intégration IBM QRadar SIEM pour corrélation d'événements. Détection d'anomalies, analyse des logs, règles d'alerting pour supervision continue.</span></p></div>
+      <div class="svcard"><span class="svcard-icon">📊</span><div class="svcard-name"><span data-lang="en">SOC, SIEM & Incident Response</span><span data-lang="fr">SOC, SIEM & Réponse à Incident</span></div><p class="svcard-desc"><span data-lang="en">Security event detection, qualification and incident response (Cortex XDR). IBM QRadar SIEM integration for event correlation, log analysis, threat hunting and phishing analysis.</span><span data-lang="fr">Détection et qualification d'événements de sécurité, réponse à incident (Cortex XDR). Intégration SIEM IBM QRadar pour corrélation d'événements, analyse de logs, threat hunting et analyse de phishing.</span></p></div>
     </div>
   </div>
 </section>
@@ -1187,7 +1229,7 @@ footer span{color:var(--accent);}
     <div class="reveal">
       <div class="edu-grid">
         <div class="edc">
-          <div class="edc-yr">2025 – <span data-lang="en">Present</span><span data-lang="fr">Présent</span></div>
+          <div class="edc-yr">2025 – 2026</div>
           <div class="edc-deg">Master 2 <span data-lang="en">Professional</span><span data-lang="fr">Professionnel</span></div>
           <div class="edc-field"><span data-lang="en">Networks & Telecommunications</span><span data-lang="fr">Réseaux et Télécommunications</span></div>
           <div class="edc-school">Université Paris Saclay · Orsay, France</div>
@@ -1198,13 +1240,13 @@ footer span{color:var(--accent);}
           <div class="edc-deg"><span data-lang="en">Engineering Degree</span><span data-lang="fr">Diplôme d'Ingénieur</span></div>
           <div class="edc-field"><span data-lang="en">Telecommunications & Networks Engineering</span><span data-lang="fr">Génie des Systèmes de Télécommunications & Réseaux</span></div>
           <div class="edc-school">ENSA · Tanger, Maroc</div>
-          <div class="edc-courses"><span data-lang="en">Network protocols · System security · Embedded programming · Distributed systems</span><span data-lang="fr">Protocoles réseau · Sécurité des systèmes · Programmation embarquée · Systèmes distribués</span></div>
+          <div class="edc-courses"><span data-lang="en">Application security · Virtualization · Cryptography · Network/System administration · Relational databases · Network programming</span><span data-lang="fr">Sécurité applicative · Virtualisation · Cryptographie · Administration Réseau/Système · Bases de Données Relationnelles · Programmation Réseaux</span></div>
         </div>
       </div>
       <div class="certs-grid">
         <div class="cert-c"><span class="cert-em">🎯</span><div><div class="cert-t">Junior Penetration Tester (eJPTv2)</div><div class="cert-o">INE Security</div></div></div>
         <div class="cert-c"><span class="cert-em">🔐</span><div><div class="cert-t">Practical Ethical Hacking (PEH)</div><div class="cert-o">TCM Security</div></div></div>
-        <div class="cert-c"><span class="cert-em">🛡</span><div><div class="cert-t">Ethical Hacking Essentials (EHE)</div><div class="cert-o">EC-Council</div></div></div>
+        <div class="cert-c"><span class="cert-em">🛡</span><div><div class="cert-t">Certified in Cybersecurity (CC)</div><div class="cert-o">(ISC)²</div></div></div>
         <div class="cert-c"><span class="cert-em">⚔</span><div><div class="cert-t">Jr. Penetration Tester Path</div><div class="cert-o">TryHackMe</div></div></div>
       </div>
     </div>
@@ -1219,26 +1261,26 @@ footer span{color:var(--accent);}
     <div class="contact-grid">
       <div class="reveal-left">
         <p class="con-desc">
-          <span data-lang="en">I'm actively looking for a <strong>6-month end-of-study internship starting March</strong>. Feel free to reach out to discuss opportunities in offensive security, auditing or penetration testing.</span>
-          <span data-lang="fr">Je recherche activement un <strong>stage de fin d'études de 6 mois à partir de Mars</strong>. N'hésitez pas à me contacter pour discuter d'opportunités en sécurité offensive, audit ou pentest.</span>
+          <span data-lang="en">I'm looking for a <strong>Cybersecurity Consultant position</strong>. Feel free to reach out to discuss opportunities in offensive security, auditing, SOC or risk &amp; compliance.</span>
+          <span data-lang="fr">Je recherche un <strong>poste de Consultant en cybersécurité</strong>. N'hésitez pas à me contacter pour discuter d'opportunités en sécurité offensive, audit, SOC ou gestion des risques et conformité.</span>
         </p>
         <div class="con-links">
           <a class="con-link" href="mailto:yasser.elkarch@gmail.com"><span class="cic">✉</span>yasser.elkarch@gmail.com</a>
           <a class="con-link" href="tel:+33759275094"><span class="cic">☎</span>+33 7 59 27 50 94</a>
-          <a class="con-link" href="https://linkedin.com/yasser-el-karch" target="_blank"><span class="cic">in</span>linkedin.com/yasser-el-karch</a>
-          <a class="con-link" href="https://github.com/predatorx-0" target="_blank"><span class="cic">⌥</span>github.com/Yasser.Elkarch</a>
+          <a class="con-link" href="https://www.linkedin.com/in/yasser-el-karch" target="_blank" rel="noopener"><span class="cic">in</span>linkedin.com/in/yasser-el-karch</a>
+          <a class="con-link" href="https://github.com/predatorx-0" target="_blank" rel="noopener"><span class="cic">⌥</span>github.com/predatorx-0</a>
           <a class="con-link" href="#"><span class="cic">◎</span>Paris, France</a>
         </div>
       </div>
       <div class="reveal-right">
         <div class="cf">
           <div class="cf-row">
-            <input class="cfi" type="text" placeholder="Name / Nom"/>
-            <input class="cfi" type="email" placeholder="Email"/>
+            <input class="cfi" type="text" id="cf-name" placeholder="Name / Nom"/>
+            <input class="cfi" type="email" id="cf-email" placeholder="Email"/>
           </div>
-          <input class="cfi" type="text" placeholder="Subject / Sujet"/>
-          <textarea class="cfi" placeholder="Message..."></textarea>
-          <button class="cf-btn"><span data-lang="en">Send Message</span><span data-lang="fr">Envoyer</span></button>
+          <input class="cfi" type="text" id="cf-subject" placeholder="Subject / Sujet"/>
+          <textarea class="cfi" id="cf-message" placeholder="Message..."></textarea>
+          <button class="cf-btn" onclick="sendMail()"><span data-lang="en">Send Message</span><span data-lang="fr">Envoyer</span></button>
         </div>
       </div>
     </div>
@@ -1247,7 +1289,7 @@ footer span{color:var(--accent);}
 
 <!-- FOOTER -->
 <footer>
-  <p>© 2025 <span>Yasser El Karch</span> · <span data-lang="en">Cybersecurity Engineer</span><span data-lang="fr">Ingénieur Cybersécurité</span> · Paris, France</p>
+  <p>© 2026 <span>Yasser El Karch</span> · <span data-lang="en">Cybersecurity Engineer</span><span data-lang="fr">Ingénieur Cybersécurité</span> · Paris, France</p>
 </footer>
 
 <script>
@@ -1351,8 +1393,8 @@ hn.addEventListener('mouseover',()=>{
    ============================================================ */
 const typedEl=document.getElementById('typed-text');
 const phrases={
-  en:['Security Auditor','Active Directory Security','Cybersecurity Engineer','Cybersecurity Consultant'],
-  fr:['Auditeur de sécurité','Sécurité Active Directory','Ingénieur Cybersécurité','Cansultant Cybersécurité']
+  en:['Cybersecurity Consultant','Penetration Tester','SOC Analyst','Security Auditor','Active Directory Security'],
+  fr:['Consultant Cybersécurité','Pentester','Analyste SOC','Auditeur de sécurité','Sécurité Active Directory']
 };
 let curLang='en',phIdx=0,charIdx=0,deleting=false;
 function type(){
@@ -1370,20 +1412,51 @@ type();
    ============================================================ */
 function setLang(l){
   curLang=l;
-  document.body.className=document.body.className.replace(/lang-\w+/,'')+'lang-'+l;
+  document.body.classList.remove('lang-en','lang-fr');
+  document.body.classList.add('lang-'+l);
+  document.documentElement.setAttribute('lang',l);
   document.getElementById('btn-en').classList.toggle('active',l==='en');
   document.getElementById('btn-fr').classList.toggle('active',l==='fr');
   phIdx=0;charIdx=0;deleting=false;
+  try{localStorage.setItem('lang',l);}catch(_){}
 }
+// restore saved language (default: browser language)
+(function(){
+  let saved=null;
+  try{saved=localStorage.getItem('lang');}catch(_){}
+  if(!saved)saved=(navigator.language||'en').toLowerCase().startsWith('fr')?'fr':'en';
+  if(saved!==curLang)setLang(saved);
+})();
 
 /* ============================================================
    THEME TOGGLE
    ============================================================ */
+function applyTheme(t){
+  document.documentElement.setAttribute('data-theme',t);
+  document.getElementById('themeBtn').textContent=t==='dark'?'🌙':'☀️';
+}
 function toggleTheme(){
-  const html=document.documentElement;
-  const isDark=html.getAttribute('data-theme')==='dark';
-  html.setAttribute('data-theme',isDark?'light':'dark');
-  document.getElementById('themeBtn').textContent=isDark?'🌙':'☀️';
+  const next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+  applyTheme(next);
+  try{localStorage.setItem('theme',next);}catch(_){}
+}
+// restore saved theme
+(function(){
+  let saved=null;
+  try{saved=localStorage.getItem('theme');}catch(_){}
+  if(saved==='light'||saved==='dark')applyTheme(saved);
+})();
+
+/* ============================================================
+   CONTACT FORM (mailto)
+   ============================================================ */
+function sendMail(){
+  const name=document.getElementById('cf-name').value.trim();
+  const email=document.getElementById('cf-email').value.trim();
+  const subject=document.getElementById('cf-subject').value.trim()||'Contact from portfolio';
+  const msg=document.getElementById('cf-message').value.trim();
+  const body=msg+(name?`\n\n— ${name}`:'')+(email?` (${email})`:'');
+  window.location.href='mailto:yasser.elkarch@gmail.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
 }
 
 /* ============================================================
@@ -1440,38 +1513,41 @@ const termData={
   <span class="out">tools</span>       — Security tools
   <span class="out">clear</span>       — Clear terminal`,
     whoami:`<span class="suc">Yasser El Karch</span> — Cybersecurity Engineer
-  Master 2 @ Université Paris Saclay
-  Certified: eJPTv2 | PEH | EHE
-  Specialization: Offensive Security / Pentest
+  Master 2 @ Université Paris-Saclay
+  Certified: eJPTv2 | PEH | CC (ISC)²
+  Specialization: Offensive Security / Pentest / SOC
   Location: Paris, France
-  Status: <span class="acc">Seeking 6-month internship from March 2025</span>`,
+  Status: <span class="acc">Seeking a Cybersecurity Consultant position</span>`,
     skills:`<span class="acc">Core Skills:</span>
-  [██████████] 90% Penetration Testing
   [█████████ ] 88% Active Directory Security
-  [████████  ] 85% Web App Pentest (OWASP)
-  [████████  ] 82% Network Security
-  [███████   ] 78% Python / Scripting
-  [███████   ] 75% SIEM / Log Analysis`,
+  [████████  ] 85% Penetration Testing
+  [████████  ] 85% Network Security
+  [████████  ] 85% Incident Response / SOC
+  [███████   ] 75% Web App Pentest (OWASP)
+  [███████   ] 75% Python / Scripting`,
     experience:`<span class="acc">Work Experience:</span>
-  [2024–2025] IS Security Auditor @ La Banque Populaire
-  [2024]      Pentester & AD Security @ La Banque Populaire (Internship)
+  [2026]      Cybersecurity Engineer (SOC) @ Stordata / VINCI Construction GP (Internship)
+  [2024–2025] IS Security Auditor @ Banque Populaire (Full-time)
+  [2024]      Pentester & AD Security @ Banque Populaire (Internship)
   [2023]      IS Security Engineer @ INWI Telecom (Internship)`,
     certs:`<span class="acc">Certifications:</span>
   ✓ Junior Penetration Tester (eJPTv2) — INE Security
   ✓ Practical Ethical Hacking (PEH) — TCM Security
-  ✓ Ethical Hacking Essentials (EHE) — EC-Council
+  ✓ Certified in Cybersecurity (CC) — (ISC)²
   ✓ Jr. Penetration Tester Path — TryHackMe`,
     contact:`<span class="acc">Contact Information:</span>
   Email:    yasser.elkarch@gmail.com
   Phone:    +33 7 59 27 50 94
-  LinkedIn: linkedin.com/yasser-el-karch
-  GitHub:   github.com/YasserElkarch
+  LinkedIn: linkedin.com/in/yasser-el-karch
+  GitHub:   github.com/predatorx-0
   Location: Paris, France`,
     tools:`<span class="acc">Security Arsenal:</span>
   Offensive:  Metasploit, Burp Suite, Nmap, BloodHound,
-              Impacket, SQLmap, CrackMapExec, Gobuster
-  Defensive:  Nessus, IBM QRadar, Tenable IE, Wireshark
-  Scripting:  Python, Bash, PowerShell`,
+              Impacket, SQLmap, CrackMapExec, Gobuster, OpenVAS
+  Defensive:  Nessus, IBM QRadar, Tenable IE, Cortex XDR,
+              Tanium, Rapid7, XM Cyber, XMCO Serenity, Wireshark
+  Scripting:  Python, Bash, PowerShell
+  Cloud:      Docker, Kubernetes, Azure, AWS, CI/CD, VMware`,
   },
   fr:{
     help:`<span class="acc">Commandes disponibles :</span>
@@ -1483,38 +1559,41 @@ const termData={
   <span class="out">tools</span>       — Outils de sécurité
   <span class="out">clear</span>       — Effacer le terminal`,
     whoami:`<span class="suc">Yasser El Karch</span> — Ingénieur Cybersécurité
-  Master 2 @ Université Paris Saclay
-  Certifié : eJPTv2 | PEH | EHE
-  Spécialisation : Sécurité Offensive / Pentest
+  Master 2 @ Université Paris-Saclay
+  Certifié : eJPTv2 | PEH | CC (ISC)²
+  Spécialisation : Sécurité Offensive / Pentest / SOC
   Localisation : Paris, France
-  Statut : <span class="acc">Recherche stage 6 mois dès Mars 2025</span>`,
+  Statut : <span class="acc">Recherche un poste de Consultant en cybersécurité</span>`,
     skills:`<span class="acc">Compétences clés :</span>
-  [██████████] 90% Tests d'intrusion
   [█████████ ] 88% Sécurité Active Directory
-  [████████  ] 85% Pentest Web (OWASP)
-  [████████  ] 82% Sécurité réseau
-  [███████   ] 78% Python / Scripting
-  [███████   ] 75% SIEM / Analyse de logs`,
+  [████████  ] 85% Tests d'intrusion
+  [████████  ] 85% Sécurité réseau
+  [████████  ] 85% Réponse à incident / SOC
+  [███████   ] 75% Pentest Web (OWASP)
+  [███████   ] 75% Python / Scripting`,
     experience:`<span class="acc">Expériences professionnelles :</span>
-  [2024–2025] Auditeur Sécurité SI @ La Banque Populaire
-  [2024]      Pentester & Sécurité AD @ La Banque Populaire (Stage)
+  [2026]      Ingénieur Cybersécurité (SOC) @ Stordata / VINCI Construction GP (Stage)
+  [2024–2025] Auditeur Sécurité SI @ Banque Populaire (CDI)
+  [2024]      Pentester & Sécurité AD @ Banque Populaire (Stage)
   [2023]      Ingénieur Sécurité SI @ INWI Télécom (Stage)`,
     certs:`<span class="acc">Certifications :</span>
   ✓ Junior Penetration Tester (eJPTv2) — INE Security
   ✓ Practical Ethical Hacking (PEH) — TCM Security
-  ✓ Ethical Hacking Essentials (EHE) — EC-Council
+  ✓ Certified in Cybersecurity (CC) — (ISC)²
   ✓ Jr. Penetration Tester Path — TryHackMe`,
     contact:`<span class="acc">Coordonnées :</span>
   Email :    yasser.elkarch@gmail.com
   Téléphone: +33 7 59 27 50 94
-  LinkedIn : linkedin.com/yasser-el-karch
-  GitHub :   github.com/YasserElkarch
+  LinkedIn : linkedin.com/in/yasser-el-karch
+  GitHub :   github.com/predatorx-0
   Lieu :     Paris, France`,
     tools:`<span class="acc">Arsenal Sécurité :</span>
   Offensif :  Metasploit, Burp Suite, Nmap, BloodHound,
-              Impacket, SQLmap, CrackMapExec, Gobuster
-  Défensif :  Nessus, IBM QRadar, Tenable IE, Wireshark
-  Scripting : Python, Bash, PowerShell`,
+              Impacket, SQLmap, CrackMapExec, Gobuster, OpenVAS
+  Défensif :  Nessus, IBM QRadar, Tenable IE, Cortex XDR,
+              Tanium, Rapid7, XM Cyber, XMCO Serenity, Wireshark
+  Scripting : Python, Bash, PowerShell
+  Cloud :     Docker, Kubernetes, Azure, AWS, CI/CD, VMware`,
   }
 };
 
