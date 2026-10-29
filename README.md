@@ -1,4 +1,4 @@
-<h1 align="center"> Yasser EL Karch | Offensive Security Enthusiast 🐍</h1>
+<h1 align="center"> Yasser EL Karch | CyberSecurity Ingineer 🐍</h1>
 
 <p align="center">
   <img src="https://media.giphy.com/media/xUPGcguWZHRC2HyBRS/giphy.gif" width="200" />
@@ -6,5 +6,5 @@
 
 ---
 
-👋 Hello! I'm **Yasser**, a passionate **Cybersecurity Engeneer** and **Pentester in training**, with a background in network and telecommunications engineering. Experienced in security audits, vulnerability assessments, and compliance evaluations 
+👋 Hello! I'm **Yasser**, a passionate **Cybersecurity Engineer**, with a background in network and telecommunications engineering. Experienced in security audits, vulnerability assessments, and compliance evaluations 
   
